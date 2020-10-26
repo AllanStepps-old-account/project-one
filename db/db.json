@@ -1,11 +1,11 @@
 {
   "users": [
     {
+      "email": "abc@astp.me",
+      "password": "$2a$10$rbq99aB1b8whBnXAnd6Wm.xQHUhXWuxi.vt7gqDI6XdAF17YS8vCi",
       "firstName": "Allan",
       "lastName": "Stepps",
-      "email": "abc@astp.me",
-      "password": "1234",
-      "id": 11
+      "id": 2
     }
   ]
 }
