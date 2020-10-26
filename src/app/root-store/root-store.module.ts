@@ -1,0 +1,31 @@
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreModule} from '@ngrx/store';
+import {LoginModule} from './login/login.module';
+import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
+import {CustomSerializer} from './router/router.serializer';
+import {RouterModule} from './router/router.module';
+import {SignUpModule} from './sign-up/sign-up.module';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    LoginModule,
+    SignUpModule,
+    RouterModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot(),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+    }),
+    StoreRouterConnectingModule.forRoot(),
+  ],
+  providers: [
+    {provide: RouterStateSerializer, useClass: CustomSerializer}
+  ],
+  declarations: []
+})
+export class RootStoreModule {
+}
