@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
 
 import {Store} from '@ngrx/store';
-import {selectIsAuth} from '../root-store/login/login.selector';
-import {Observable, of} from 'rxjs';
-import {take, tap} from 'rxjs/operators';
+import {selectIsAuth, selectLoginIsLoading} from '../root-store/login/login.selector';
+import {Observable} from 'rxjs';
+import {filter, switchMapTo, take, tap} from 'rxjs/operators';
 
 @Injectable()
 export class DashboardGuard implements CanActivate {
@@ -13,10 +13,14 @@ export class DashboardGuard implements CanActivate {
   }
 
   canActivate(): Observable<boolean> {
-    return this.store.select(selectIsAuth).pipe(
+    return this.store.select(selectLoginIsLoading).pipe(
+      filter((isLoading) => isLoading === false),
+      switchMapTo(this.store.select(selectIsAuth)),
+      take(1),
       tap((isAuth) => {
+        console.log('isAuth', isAuth);
         if (!isAuth) {
-          this.router.navigate(['/landing']);
+          return this.router.navigate(['/landing']);
         }
       })
     );

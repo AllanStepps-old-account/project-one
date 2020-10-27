@@ -4,6 +4,7 @@ import { initialState, State } from './login.state';
 export function loginReducer(state = initialState, action: Actions): State {
   switch (action.type) {
     case ActionTypes.LOGIN_REQUEST:
+    case ActionTypes.LOGIN_DRY_REQUEST:
       return {
         ...state,
         error: null,

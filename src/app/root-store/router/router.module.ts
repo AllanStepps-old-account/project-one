@@ -5,7 +5,7 @@ import {EffectsModule} from '@ngrx/effects';
 import RouterEffects from './router.effects';
 import {UserService} from '../../services/user.service';
 import {HttpClientModule} from '@angular/common/http';
-import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
+import {routerReducer} from '@ngrx/router-store';
 
 @NgModule({
   imports: [

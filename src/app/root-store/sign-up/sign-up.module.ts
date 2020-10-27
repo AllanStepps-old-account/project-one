@@ -11,7 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     CommonModule,
     HttpClientModule,
-    StoreModule.forFeature('', signUpReducer),
+    StoreModule.forFeature('signup', signUpReducer),
     EffectsModule.forFeature([SignUpEffects])
   ],
   providers: [

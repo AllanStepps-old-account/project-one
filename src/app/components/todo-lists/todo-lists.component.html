@@ -1,0 +1,12 @@
+<p>todo-lists works!</p>
+
+ALL LISTS
+<ul>
+  <li *ngFor="let list of lists$ | async">
+    {{ list.name }} (id: {{ list.id }}), <a mat-button (click)="goToList(list)">go to the list</a>
+  </li>
+</ul>
+
+
+NEW
+<app-todo-list-create></app-todo-list-create>

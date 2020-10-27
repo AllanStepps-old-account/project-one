@@ -7,5 +7,74 @@
       "lastName": "Stepps",
       "id": 2
     }
+  ],
+  "lists": [
+    {
+      "name": "MA LISTE",
+      "userId": 2,
+      "id": 1
+    },
+    {
+      "name": "MES COURSES",
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "name": "MA LISTE",
+      "userId": 2,
+      "id": 3
+    },
+    {
+      "name": "NEW LIST",
+      "userId": 2,
+      "id": 4
+    },
+    {
+      "name": "NEW LISTE",
+      "userId": 2,
+      "id": 5
+    },
+    {
+      "name": "TEST LIST ",
+      "userId": 2,
+      "id": 6
+    },
+    {
+      "name": "cristina",
+      "userId": 2,
+      "id": 7
+    }
+  ],
+  "items": [
+    {
+      "stroke": false,
+      "action": "mon premier item",
+      "listId": 1,
+      "id": 1
+    },
+    {
+      "stroke": false,
+      "action": "mon item 2",
+      "listId": 1,
+      "id": 2
+    },
+    {
+      "stroke": false,
+      "action": "mon item 3",
+      "listId": 1,
+      "id": 3
+    },
+    {
+      "stroke": false,
+      "action": "mon item 4",
+      "listId": 1,
+      "id": 4
+    },
+    {
+      "stroke": false,
+      "action": "faire valise",
+      "listId": 7,
+      "id": 5
+    }
   ]
 }

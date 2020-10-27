@@ -20,7 +20,6 @@ export default class SignUpEffects {
     ofType<SignUpRequestAction>(
       ActionTypes.SIGN_UP_REQUEST,
     ),
-    tap(console.log),
     switchMap((action) => this.userService
       .signUp(action.payload.user)
       .pipe(

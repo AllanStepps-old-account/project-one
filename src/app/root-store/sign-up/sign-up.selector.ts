@@ -9,7 +9,7 @@ const getError = (state: State): any => state.error;
 
 const getIsLoading = (state: State): boolean => state.isLoading;
 
-export const selectSignUpState: MemoizedSelector<object, State> = createFeatureSelector<State>('auth');
+export const selectSignUpState: MemoizedSelector<object, State> = createFeatureSelector<State>('signup');
 
 export const selectSignUpError: MemoizedSelector<object, any> = createSelector(
   selectSignUpState,

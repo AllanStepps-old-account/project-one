@@ -12,7 +12,6 @@ export function signUpReducer(state = initialState, action: Actions): State {
     case ActionTypes.SIGN_UP_SUCCESS:
       return {
         ...state,
-        user: action.payload.user,
         error: null,
         isLoading: false,
       };

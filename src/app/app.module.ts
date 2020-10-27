@@ -11,12 +11,16 @@ import {LandingModule} from './flow/landing/landing.module';
 import {SignUpModule} from './components/sign-up/sign-up.module';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {RootStoreModule} from './root-store/root-store.module';
+import {RootModule} from './root-store/root.module';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {MatButtonModule} from '@angular/material/button';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {LoginModule} from './components/log-in/login.module';
+import { TodoListDisplayComponent } from './components/todo-list-display/todo-list-display.component';
+import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import { TodoListsComponent } from './components/todo-lists/todo-lists.component';
+import {AuthInterceptor} from './interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,13 +37,18 @@ import {LoginModule} from './components/log-in/login.module';
     LoginModule,
 
     AppRoutingModule,
-    RootStoreModule,
+    RootModule,
 
     MatToolbarModule,
     MatButtonModule,
   ],
   providers: [
-    HttpClientModule
+    HttpClientModule,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })

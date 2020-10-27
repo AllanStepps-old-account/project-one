@@ -11,8 +11,12 @@ const appRoutes: Routes = [
   {path: 'landing', component: LandingComponent},
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: SignUpComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [DashboardGuard]},
-  {path: '**', redirectTo: '/landing'}
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./flow/dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [DashboardGuard]
+  },
+  // {path: '**', redirectTo: '/landing'}
 ];
 
 

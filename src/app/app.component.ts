@@ -1,8 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {LoginRequestAction, LogoutAction} from './root-store/login/login.actions';
-import {NavigationStart} from '@angular/router';
+import {LoginFailureAction, LoginRequestAction, LoginSuccessAction, LogoutAction} from './root-store/login/login.actions';
 import {selectIsAuth} from './root-store/login/login.selector';
+import {take} from 'rxjs/operators';
+import {User} from './models/user.model';
+import {UserService} from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,7 @@ export class AppComponent {
 
   isAuthenticated$ = this.store.select(selectIsAuth);
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private userService: UserService) {
   }
 
   logout() {
