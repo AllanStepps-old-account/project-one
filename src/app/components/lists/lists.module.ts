@@ -7,17 +7,18 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {TodoListsComponent} from './todo-lists.component';
-import {TodoListDisplayModule} from '../todo-list-display/todo-list-display.module';
+import {ListsComponent} from './lists.component';
+import {ListModule} from '../list/list.module';
 import {RouterModule} from '@angular/router';
-import {TodoListCreateModule} from '../todo-list-create/todo-list-create.module';
+import {ListCreateModule} from '../list-create/list-create.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
-    TodoListsComponent,
+    ListsComponent,
   ],
   exports: [
-    TodoListsComponent,
+    ListsComponent,
   ],
   imports: [
     MatCardModule,
@@ -28,10 +29,11 @@ import {TodoListCreateModule} from '../todo-list-create/todo-list-create.module'
     MatToolbarModule,
     ReactiveFormsModule,
     CommonModule,
-    TodoListDisplayModule,
+    ListModule,
     RouterModule,
-    TodoListCreateModule,
+    ListCreateModule,
+    MatProgressSpinnerModule
   ],
 })
-export class TodoListsModule {
+export class ListsModule {
 }

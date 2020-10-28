@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LandingComponent} from './flow/landing/landing.component';
-import {DashboardComponent} from './flow/dashboard/dashboard.component';
-import {LoginComponent} from './components/log-in/login.component';
+import {LoginComponent} from './components/login/login.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {DashboardGuard} from './guards/dashboard.guard';
 

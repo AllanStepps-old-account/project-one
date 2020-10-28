@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {Item} from '../../models/item.model';
+import {Update} from '@ngrx/entity';
 
 export enum ActionTypes {
   ITEM_CREATE = '[Item] Create New Item',
@@ -27,7 +28,7 @@ export class ItemCreatedAction implements Action {
 export class ItemEditAction implements Action {
   readonly type = ActionTypes.ITEM_EDIT;
 
-  constructor(public payload: { item: Item }) {
+  constructor(public payload: { item: Update<Item> }) {
   }
 }
 

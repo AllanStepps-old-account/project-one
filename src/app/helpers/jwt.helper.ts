@@ -7,3 +7,7 @@ export function parseJwt(token) {
 
   return JSON.parse(jsonPayload);
 }
+
+export function isJwtExpired(exp: number) {
+  return Date.now() >= (exp * 1000)
+}

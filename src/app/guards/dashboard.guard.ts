@@ -18,7 +18,6 @@ export class DashboardGuard implements CanActivate {
       switchMapTo(this.store.select(selectIsAuth)),
       take(1),
       tap((isAuth) => {
-        console.log('isAuth', isAuth);
         if (!isAuth) {
           return this.router.navigate(['/landing']);
         }

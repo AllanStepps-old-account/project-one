@@ -1,17 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {selectAllLists} from '../../root-store/lists/lists.selector';
-import {ListGetAllAction} from '../../root-store/lists/lists.actions';
+import {selectAllLists, selectListIsLoading} from '../../root-store/lists/lists.selector';
 import {map} from 'rxjs/operators';
 import {List} from '../../models/list.model';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-todo-lists',
-  templateUrl: './todo-lists.component.html',
-  styleUrls: ['./todo-lists.component.scss']
+  templateUrl: './lists.component.html',
+  styleUrls: ['./lists.component.scss']
 })
-export class TodoListsComponent implements OnInit {
+export class ListsComponent implements OnInit {
+
+  isLoading$ = this.store.select(selectListIsLoading);
+
   lists$ = this.store.select(selectAllLists).pipe(
     map(Object.values)
   );

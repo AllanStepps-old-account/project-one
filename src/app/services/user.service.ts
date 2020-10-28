@@ -3,9 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {catchError, map, mergeMap, tap} from 'rxjs/operators';
 import {User} from '../models/user.model';
-import {Observable, of, throwError} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {AuthResponse} from '../models/auth.response';
-import {parseJwt} from '../helpers/jwt.helper';
+import {isJwtExpired, parseJwt} from '../helpers/jwt.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -73,14 +73,14 @@ export class UserService {
   drylogin(): Observable<User> {
     if (this.accessToken) {
       const {sub, exp} = parseJwt(this.accessToken);
-      if (exp > Date.now() / 1000) {
+      if (!isJwtExpired(exp)) {
         return this.getUser(sub);
       } else {
         this.accessToken = null;
       }
-      return throwError('Authentication expired. Please log-in.');
+      return throwError('Authentication expired. Please login.');
     }
-    return throwError('Please log-in.');
+    return throwError('Please login.');
   }
 
   private getUser(id: string): Observable<User> {

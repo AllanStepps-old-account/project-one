@@ -7,14 +7,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {TodoItemComponent} from './todo-item.component';
+import {ItemComponent} from './item.component';
 
 @NgModule({
   declarations: [
-    TodoItemComponent,
+    ItemComponent,
   ],
   exports: [
-    TodoItemComponent,
+    ItemComponent,
   ],
   imports: [
     MatCardModule,
@@ -27,5 +27,5 @@ import {TodoItemComponent} from './todo-item.component';
     CommonModule,
   ],
 })
-export class TodoItemModule {
+export class ItemModule {
 }

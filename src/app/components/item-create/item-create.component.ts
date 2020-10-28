@@ -7,10 +7,10 @@ import {ItemCreateAction} from '../../root-store/items/items.actions';
 
 @Component({
   selector: 'app-todo-list-create',
-  templateUrl: './todo-item-create.component.html',
-  styleUrls: ['./todo-item-create.component.scss']
+  templateUrl: './item-create.component.html',
+  styleUrls: ['./item-create.component.scss']
 })
-export class TodoItemCreateComponent implements OnInit {
+export class ItemCreateComponent implements OnInit {
 
   @Input()
   listId: List['id'];
@@ -19,7 +19,7 @@ export class TodoItemCreateComponent implements OnInit {
     action: '',
   });
 
-  constructor(private formBuilder: FormBuilder, private store: Store, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private store: Store) {
   }
 
   ngOnInit(): void {

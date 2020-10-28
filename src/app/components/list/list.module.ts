@@ -5,16 +5,18 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {TodoListCreateComponent} from './todo-list-create.component';
+import {ListComponent} from './list.component';
+import {ItemCreateModule} from '../item-create/item-create.module';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
-    TodoListCreateComponent,
+    ListComponent,
   ],
   exports: [
-    TodoListCreateComponent,
+    ListComponent,
   ],
   imports: [
     MatCardModule,
@@ -23,9 +25,12 @@ import {TodoListCreateComponent} from './todo-list-create.component';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    MatCheckboxModule,
     ReactiveFormsModule,
     CommonModule,
+    ItemCreateModule,
+    FormsModule,
   ],
 })
-export class TodoListCreateModule {
+export class ListModule {
 }

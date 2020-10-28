@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ListGetAllAction} from '../../root-store/lists/lists.actions';
+import {Component, OnInit} from '@angular/core';
+import {ListLoadRequestAction} from '../../root-store/lists/lists.actions';
 import {Store} from '@ngrx/store';
 import {ItemGetAllAction} from '../../root-store/items/items.actions';
 
@@ -9,10 +9,11 @@ import {ItemGetAllAction} from '../../root-store/items/items.actions';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+  }
 
   ngOnInit(): void {
-    this.store.dispatch(new ListGetAllAction());
-    this.store.dispatch(new ItemGetAllAction())
+    this.store.dispatch(new ListLoadRequestAction());
+    this.store.dispatch(new ItemGetAllAction());
   }
 }

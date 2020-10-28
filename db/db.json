@@ -75,6 +75,18 @@
       "action": "faire valise",
       "listId": 7,
       "id": 5
+    },
+    {
+      "stroke": false,
+      "action": "New item",
+      "listId": 1,
+      "id": 6
+    },
+    {
+      "stroke": false,
+      "action": "new item",
+      "listId": 1,
+      "id": 7
     }
   ]
 }
