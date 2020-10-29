@@ -4,7 +4,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {LoginModule} from './login/login.module';
-import {RouterState, RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
+import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {CustomSerializer} from './router/router.serializer';
 import {RouterModule} from './router/router.module';
 import {SignUpModule} from './sign-up/sign-up.module';
@@ -31,7 +31,9 @@ import {ItemsModule} from './items/items.module';
   providers: [
     {provide: RouterStateSerializer, useClass: CustomSerializer}
   ],
-  declarations: []
+  exports: [
+    StoreModule
+  ]
 })
 export class RootModule {
 }

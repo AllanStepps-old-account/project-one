@@ -12,6 +12,9 @@ export class ListOverviewComponent {
   @Input()
   list: List;
 
+  @Input()
+  nbItems;
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
 

@@ -37,6 +37,7 @@ export class ListCreateComponent implements OnInit {
   onSubmit() {
     const list = this.listForm.value;
     this.store.dispatch(new ListCreateRequestAction({list}));
+    this.listForm.reset();
   }
 
 }

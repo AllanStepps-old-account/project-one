@@ -8,6 +8,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {LoginComponent} from './login.component';
+import {FlexModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {LoginComponent} from './login.component';
     MatToolbarModule,
     ReactiveFormsModule,
     CommonModule,
+    FlexModule,
   ],
 })
 export class LoginModule {

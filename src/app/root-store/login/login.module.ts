@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {StoreModule} from '@ngrx/store';
-import {loginReducer} from './login.reducer';
+import {loginFeatureName, loginReducer} from './login.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import LoginEffects from './login.effects';
 import {UserService} from '../../services/user.service';
@@ -14,7 +14,7 @@ import {SnackBarServiceModule} from '../../services/snack-bar/snack-bar.service.
     CommonModule,
     HttpClientModule,
     SnackBarServiceModule,
-    StoreModule.forFeature('auth', loginReducer),
+    StoreModule.forFeature(loginFeatureName, loginReducer),
     EffectsModule.forFeature([LoginEffects])
   ],
   providers: [

@@ -1,6 +1,8 @@
 import {Actions, ActionTypes} from './lists.actions';
 import {featureAdapter, initialState, State} from './lists.state';
 
+export const listsFeatureName = 'lists';
+
 export function listsReducer(state = initialState, action: Actions): State {
   switch (action.type) {
     case ActionTypes.LIST_CREATE_REQUEST:

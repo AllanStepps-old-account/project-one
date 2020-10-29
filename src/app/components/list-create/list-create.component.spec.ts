@@ -1,15 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListCreateComponent } from './list-create.component';
+import {ItemCreateModule} from '../item-create/item-create.module';
+import {ListCreateModule} from './list-create.module';
+import {Store} from '@ngrx/store';
+import {provideMockStore} from '@ngrx/store/testing';
+import {SharedModule} from '../../shared.module';
 
-describe('TodoListComponent', () => {
+xdescribe('ListCreateComponent', () => {
   let component: ListCreateComponent;
   let fixture: ComponentFixture<ListCreateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListCreateComponent ]
-    })
+      imports: [SharedModule, ListCreateModule]})
     .compileComponents();
   });
 

@@ -1,5 +1,11 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {DashboardComponent} from './dashboard.component';
+import {AppRoutingModule} from '../../app-routing.module';
+import {Store} from '@ngrx/store';
+import {provideMockStore} from '@ngrx/store/testing';
+import {DashboardModule} from './dashboard.module';
+import {HttpClientModule} from '@angular/common/http';
+import {SharedModule} from '../../shared.module';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -7,7 +13,8 @@ describe('DashboardComponent', () => {
 
   beforeEach(async () =>
     TestBed.configureTestingModule({
-        declarations: [DashboardComponent],
+        imports: [SharedModule, DashboardModule],
+
       }
     ).compileComponents());
 

@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ListLoadRequestAction} from '../../root-store/lists/lists.actions';
 import {Store} from '@ngrx/store';
-import {ItemGetAllAction} from '../../root-store/items/items.actions';
+import {ItemLoadRequestAction} from '../../root-store/items/items.actions';
 import {UserService} from '../../services/user.service';
 import {LogoutAction} from '../../root-store/login/login.actions';
-import {slideInOutAnimation} from './dashboard.animation';
 import {RouterOutlet} from '@angular/router';
 
 @Component({
@@ -24,7 +23,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new ListLoadRequestAction());
-    this.store.dispatch(new ItemGetAllAction());
+    this.store.dispatch(new ItemLoadRequestAction());
   }
 
   prepareRoute(outlet: RouterOutlet) {

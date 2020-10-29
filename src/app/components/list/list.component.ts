@@ -1,13 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {ActivatedRoute, Router} from '@angular/router';
 import {selectSelectedList} from '../../root-store/lists/lists.selector';
 import {selectSelectedItems} from '../../root-store/items/items.selector';
 import {Item} from '../../models/item.model';
-import {ItemEditAction} from '../../root-store/items/items.actions';
 import {Observable} from 'rxjs';
 import {List} from '../../models/list.model';
-import {Form} from '@angular/forms';
+import {ItemUpdateRequestAction} from '../../root-store/items/items.actions';
 
 @Component({
   selector: 'app-list-display',
@@ -25,9 +23,8 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   toggleItemStroke(item: Item) {
-    this.store.dispatch(new ItemEditAction({
+    this.store.dispatch(new ItemUpdateRequestAction({
       item: {
         id: item.id,
         changes: {

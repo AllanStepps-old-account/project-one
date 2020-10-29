@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {catchError, map, mergeMap, tap} from 'rxjs/operators';
 import {User} from '../models/user.model';
-import {Observable, throwError} from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
 import {AuthResponse} from '../models/auth.response';
 import {isJwtExpired, parseJwt} from '../helpers/jwt.helper';
 
@@ -19,11 +19,11 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
   }
 
-  get accessToken(): string {
+  getAccessToken(): string {
     return localStorage.getItem(this.ACCESS_TOKEN_KEY);
   }
 
-  set accessToken(accessToken: string) {
+  setAccessToken(accessToken: string) {
     if (accessToken == null) {
       localStorage.removeItem(this.ACCESS_TOKEN_KEY);
     } else {
@@ -42,7 +42,7 @@ export class UserService {
       email,
       password
     }).pipe(
-      tap(({accessToken}: AuthResponse) => this.accessToken = accessToken),
+      tap(({accessToken}: AuthResponse) => this.setAccessToken(accessToken)),
       map(({accessToken}: AuthResponse) => {
         const {sub} = parseJwt(accessToken);
         return sub;
@@ -52,15 +52,21 @@ export class UserService {
     );
   }
 
-  signUp(user: User): Observable<{ accessToken:string }> {
-    return this.httpClient.post<{ accessToken:string }>(this.path, {...user}).pipe(
-      tap(({accessToken}) => this.accessToken = accessToken),
+  signUp(user: User): Observable<{ accessToken: string }> {
+    return this.httpClient.post<{ accessToken: string }>(this.path, {...user}).pipe(
+      tap(({accessToken}) => this.setAccessToken(accessToken)),
+      catchError((error) => throwError(error.error))
+    );
+  }
+
+  update(user: User): Observable<User> {
+    return this.httpClient.patch<User>(this.path + '/' + user.id, {...user}).pipe(
       catchError((error) => throwError(error.error))
     );
   }
 
   logOut(): void {
-    this.accessToken = null;
+    this.setAccessToken(null);
   }
 
   /**
@@ -71,20 +77,37 @@ export class UserService {
    *
    * @see RootStateEffects.init$
    */
-  drylogin(): Observable<User> {
-    if (this.accessToken) {
-      const {sub, exp} = parseJwt(this.accessToken);
+  loginFromStorage(): Observable<User> {
+    const accessToken = this.getAccessToken();
+
+    if (accessToken) {
+      const {sub, exp} = parseJwt(accessToken);
+
+      console.log('sub', sub);
+
       if (!isJwtExpired(exp)) {
         return this.getUser(sub);
       } else {
-        this.accessToken = null;
+        this.setAccessToken(null);
       }
       return throwError('Authentication expired. Please login.');
     }
     return throwError('Please login.');
   }
 
+  checkEmailExists(value: string): Observable<boolean> {
+    if (!value) {
+      return of(false);
+    }
+    return this.httpClient.get(environment.apiUrl + '/checkEmail/' + value).pipe(
+      map((array: User[]) => !!array.length)
+    );
+  }
+
   private getUser(id: string): Observable<User> {
+
+    console.log('GET USER', id);
+
     return this.httpClient.get<User>(this.path + '/' + id).pipe(
       catchError((error) => throwError(error.error))
     );

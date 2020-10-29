@@ -1,30 +1,24 @@
 <mat-toolbar>
-  <span>User Edit</span>
+  <span>Edit your profile</span>
 </mat-toolbar>
-
-{{ user$ | async | json }}
 
 <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
   <mat-card-content>
-    <mat-form-field class="full-width">
+    <mat-form-field fxFlexFill>
       <mat-label>First Name</mat-label>
       <input matInput placeholder="First name" formControlName="firstName" required>
     </mat-form-field>
-    <mat-form-field class="full-width">
+    <mat-form-field fxFlexFill>
       <mat-label>Last Name</mat-label>
       <input matInput placeholder="Last Name" formControlName="lastName" required>
     </mat-form-field>
-    <mat-form-field class="full-width">
+    <mat-form-field fxFlexFill>
       <mat-label>Email</mat-label>
       <input matInput placeholder="Email" formControlName="email">
     </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" placeholder="Password" formControlName="password">
-    </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button color="primary" (click)="prefill()">PREFILL</button>
-    <button mat-raised-button type="submit" [disabled]="!editForm.valid" color="primary">REGISTER</button>
+    <button mat-raised-button type="submit" [disabled]="!editForm.valid" color="primary">UPDATE MY PROFILE</button>
+    <a mat-button color="accent" [routerLink]="['/dashboard']">CANCEL</a>
   </mat-card-actions>
 </form>

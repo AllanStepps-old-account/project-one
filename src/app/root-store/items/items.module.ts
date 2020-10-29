@@ -1,12 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {StoreModule} from '@ngrx/store';
-import {itemsReducer} from './items.reducer';
+import {itemsFeatureName, itemsReducer} from './items.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import ItemsEffects from './items.effects';
 import {HttpClientModule} from '@angular/common/http';
 import {SnackBarServiceModule} from '../../services/snack-bar/snack-bar.service.module';
-import {ListService} from '../../services/list.service';
 import {ItemService} from '../../services/item.service';
 
 @NgModule({
@@ -14,7 +13,7 @@ import {ItemService} from '../../services/item.service';
     CommonModule,
     HttpClientModule,
     SnackBarServiceModule,
-    StoreModule.forFeature('items', itemsReducer),
+    StoreModule.forFeature(itemsFeatureName, itemsReducer),
     EffectsModule.forFeature([ItemsEffects])
   ],
   providers: [

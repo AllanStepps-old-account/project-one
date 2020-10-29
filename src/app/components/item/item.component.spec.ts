@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ItemComponent } from './item.component';
+import {ItemComponent} from './item.component';
+import {ItemModule} from './item.module';
+import {SharedModule} from '../../shared.module';
 
 describe('TodoItemComponent', () => {
   let component: ItemComponent;
@@ -8,9 +10,9 @@ describe('TodoItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItemComponent ]
+      imports: [SharedModule, ItemModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

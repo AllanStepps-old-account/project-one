@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {LoginRequestAction} from '../../root-store/login/login.actions';
-import {selectIsAuth} from '../../root-store/login/login.selector';
+import {selectIsAuth, selectLoginError} from '../../root-store/login/login.selector';
 import {filter, map, take} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {selectSignUpError} from '../../root-store/sign-up/sign-up.selector';
 
 @Component({
   selector: 'app-log-in',
@@ -17,6 +18,8 @@ export class LoginComponent implements OnInit {
     email: ['', Validators.email],
     password: '',
   });
+
+  readonly loginError$ =  this.store.select(selectLoginError);
 
   constructor(private formBuilder: FormBuilder, private store: Store, private router: Router) {
   }

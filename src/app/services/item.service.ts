@@ -13,7 +13,7 @@ export class ItemService {
 
   private path = environment.apiUrl + '/items';
 
-  constructor(private httpClient: HttpClient, private store: Store) {
+  constructor(private httpClient: HttpClient) {
   }
 
   createItem(item: Item, listId: string): Observable<Item> {
@@ -30,7 +30,12 @@ export class ItemService {
     return this.httpClient.get<Item[]>(this.path);
   }
 
-  sendUpdates(items: Update<Item>[]) {
-    return forkJoin(items.map(({id, changes}) => this.httpClient.patch(this.path + '/' + id, {...changes})));
+  update(item: Update<Item>): Observable<Item> {
+    const {id, changes} = item;
+    return this.httpClient.patch<Item>(this.path + '/' + id, {...changes});
+  }
+
+  updateBulk(items: Update<Item>[]) {
+    return forkJoin(items.map((item) => this.update(item)));
   }
 }

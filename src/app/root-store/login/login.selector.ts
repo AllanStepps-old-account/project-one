@@ -5,6 +5,7 @@ import {
 } from '@ngrx/store';
 import {State} from './login.state';
 import {User} from '../../models/user.model';
+import {loginFeatureName} from './login.reducer';
 
 const getError = (state: State): any => state.error;
 
@@ -18,7 +19,7 @@ const getFirstName = (state: State): string => state.user.firstName;
 
 const getUserId = (state: State): string => state.user.id;
 
-export const selectLoginState: MemoizedSelector<object, State> = createFeatureSelector<State>('auth');
+export const selectLoginState: MemoizedSelector<object, State> = createFeatureSelector<State>(loginFeatureName);
 
 export const selectLoginError: MemoizedSelector<object, any> = createSelector(
   selectLoginState,

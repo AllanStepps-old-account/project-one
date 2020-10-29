@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
+import {ItemCreateModule} from '../item-create/item-create.module';
+import {LoginModule} from './login.module';
+import {Store} from '@ngrx/store';
+import {provideMockStore} from '@ngrx/store/testing';
+import {SharedModule} from '../../shared.module';
 
 describe('LogInComponent', () => {
   let component: LoginComponent;
@@ -8,8 +13,7 @@ describe('LogInComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoginComponent],
-    })
+      imports: [SharedModule, LoginModule]})
       .compileComponents();
   });
 

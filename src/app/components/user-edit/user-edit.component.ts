@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import {SignUpRequestAction} from '../../root-store/sign-up/sign-up.actions';
+import {SignUpRequestAction, SignUpUpdateRequestAction, SignUpUpdateSuccessAction} from '../../root-store/sign-up/sign-up.actions';
 import {selectUser} from '../../root-store/login/login.selector';
 import {filter, map, take} from 'rxjs/operators';
 import {User} from '../../models/user.model';
@@ -20,7 +20,7 @@ export class UserEditComponent implements OnInit {
 
   editForm = this.formBuilder.group({
     id: '',
-    firstName: '', // required validators are in the template.
+    firstName: '',
     lastName: '',
     email: ['', Validators.email],
     password: '',
@@ -34,7 +34,7 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.store.dispatch(new SignUpRequestAction({user: this.editForm.value}));
+    this.store.dispatch(new SignUpUpdateRequestAction({user: this.editForm.value}));
   }
 
   prefill() {

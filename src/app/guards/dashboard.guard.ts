@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
-
 import {Store} from '@ngrx/store';
 import {selectIsAuth, selectLoginIsLoading} from '../root-store/login/login.selector';
 import {Observable} from 'rxjs';

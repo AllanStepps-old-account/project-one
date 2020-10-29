@@ -1,6 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WelcomeComponent } from './welcome.component';
+import {WelcomeComponent} from './welcome.component';
+import {WelcomeModule} from './welcome.module';
+import {Store} from '@ngrx/store';
+import {provideMockStore} from '@ngrx/store/testing';
+import {SharedModule} from '../../shared.module';
 
 describe('TodoItemComponent', () => {
   let component: WelcomeComponent;
@@ -8,9 +12,8 @@ describe('TodoItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WelcomeComponent ]
-    })
-    .compileComponents();
+      imports: [SharedModule, WelcomeModule]})
+      .compileComponents();
   });
 
   beforeEach(() => {

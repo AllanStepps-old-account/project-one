@@ -1,12 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {AppModule} from './app.module';
+import {SharedModule} from './shared.module';
+import {CommonModule} from '@angular/common';
 
-describe('AppComponent', () => {
+xdescribe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent,
-      ],
+      imports: [CommonModule, SharedModule, AppModule],
     }).compileComponents();
   });
 

@@ -1,5 +1,6 @@
 {
   "/api*": "$1",
   "/users*": "/600/users$1",
-  "/messages*": "/660/messages$1"
+  "/lists*": "/664/lists$1",
+  "/checkEmail/*": "/users?email=$1&limit=1"
 }

@@ -6,16 +6,17 @@ import {Params} from '@angular/router';
 interface RouterState extends RouterReducerState<RouterStateUrl> {
 }
 
+export const routerFeatureName = 'routerReducer';
+
 const getParam = ({state}: RouterState): Params => state.params;
 
-export const selectRouterState: MemoizedSelector<object, RouterState> = createFeatureSelector<RouterState>('routerReducer');
+export const selectRouterState: MemoizedSelector<object, RouterState> = createFeatureSelector<RouterState>(routerFeatureName);
 
 export const selectRouteParams: MemoizedSelector<object, any> = createSelector(
   selectRouterState,
   getParam,
 );
 
-//
 // export const {
 //   selectCurrentRoute, // select the current route
 //   selectFragment, // select the current route fragment

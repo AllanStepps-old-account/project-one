@@ -6,9 +6,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {ReactiveFormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
+import {CommonModule, I18nPluralPipe} from '@angular/common';
 import {ListOverviewComponent} from './list-overview.component';
-import {ExtendedModule, FlexModule} from '@angular/flex-layout';
+import {ExtendedModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import {ExtendedModule, FlexModule} from '@angular/flex-layout';
     ListOverviewComponent,
   ],
   imports: [
+    CommonModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -25,9 +26,9 @@ import {ExtendedModule, FlexModule} from '@angular/flex-layout';
     MatIconModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    CommonModule,
     ExtendedModule,
   ],
+  providers: [I18nPluralPipe]
 })
 export class ListOverviewModule {
 }

@@ -4,12 +4,13 @@ import {
   MemoizedSelector,
 } from '@ngrx/store';
 import {State} from './sign-up.state';
+import {signUpFeatureName} from './sign-up.reducer';
 
 const getError = (state: State): any => state.error;
 
 const getIsLoading = (state: State): boolean => state.isLoading;
 
-export const selectSignUpState: MemoizedSelector<object, State> = createFeatureSelector<State>('signup');
+export const selectSignUpState: MemoizedSelector<object, State> = createFeatureSelector<State>(signUpFeatureName);
 
 export const selectSignUpError: MemoizedSelector<object, any> = createSelector(
   selectSignUpState,

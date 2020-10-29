@@ -2,167 +2,142 @@
   "users": [
     {
       "email": "abc@astp.me",
-      "password": "$2a$10$rbq99aB1b8whBnXAnd6Wm.xQHUhXWuxi.vt7gqDI6XdAF17YS8vCi",
+      "password": "$2a$10$pPhPP5VRvg1ApfE/rd9VruBY/g22QErpxFmc4SomiB4cje/.0iPb.",
+      "firstName": "Allan",
+      "lastName": "Stepps",
+      "id": 1
+    },
+    {
+      "email": "ab2c@astp.me",
+      "password": "$2a$10$CUCbdv707Mt.T1LeNYiKUeCIL4c4pffrTmQbg4/v/suOVhurD69tu",
       "firstName": "Allan",
       "lastName": "Stepps",
       "id": 2
     },
     {
-      "email": "abcd@astp.me",
-      "password": "$2a$10$QHKbgK2tEDA6x5m3rn8EEe1vixn2ef38k9SB5hBGYnuhrOP3coS86",
+      "email": "abc2@astp.me",
+      "password": "$2a$10$0Ev6hMqjyBc11tpaDBFP1..OR690eL/VxJKXUl9sda3sn7mgb4uwK",
       "firstName": "Allan",
       "lastName": "Stepps",
       "id": 3
+    },
+    {
+      "email": "abce@astp.me",
+      "password": "$2a$10$tbm4sCtJnUEB09xd3uQoou4B8dQwmgLbzfJ5tUan6BZaPzoLZ9ofm",
+      "firstName": "Raymond",
+      "lastName": "Stepps",
+      "id": 4
+    },
+    {
+      "email": "cventuruzzo@gmail.com",
+      "password": "$2a$10$YX8I3K3nmKHM9niSdCL53.7D9nvSMfZLNPh553grseIVBJrJNAE/S",
+      "firstName": "Cristina",
+      "lastName": "Venturuzzo",
+      "id": 5
     }
   ],
   "lists": [
     {
-      "name": "MA LISTE",
-      "userId": 2,
+      "name": "Bien réussir un confinemenet",
+      "userId": 1,
       "id": 1
     },
     {
-      "name": "MES COURSES",
-      "userId": 2,
+      "name": "Project #1",
+      "userId": 1,
       "id": 2
     },
     {
-      "name": "Ma nouvelle liste",
-      "userId": 2,
+      "name": "My new list",
+      "userId": 4,
       "id": 3
     },
     {
-      "name": "asdad",
-      "userId": 2,
+      "name": "Super ! ",
+      "userId": 4,
       "id": 4
+    },
+    {
+      "name": "Nouvelle list",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "name": "ça marche ?",
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "name": "How to prepare the lock-down",
+      "userId": 5,
+      "id": 7
+    },
+    {
+      "name": "le nom de ta liste",
+      "userId": 1,
+      "id": 8
     }
   ],
   "items": [
     {
-      "stroke": false,
-      "action": "mon premier item",
+      "stroke": true,
+      "action": "Acheter des pates",
       "listId": 1,
       "id": 1
     },
     {
-      "stroke": false,
-      "action": "mon item 2",
+      "stroke": true,
+      "action": "Beaucoup de pates",
       "listId": 1,
       "id": 2
     },
     {
-      "stroke": false,
-      "action": "mon item 3",
-      "listId": 1,
+      "stroke": true,
+      "action": "Index",
+      "listId": 2,
       "id": 3
     },
     {
-      "stroke": false,
-      "action": "mon item 4",
-      "listId": 1,
+      "stroke": true,
+      "action": "Sign-Up",
+      "listId": 2,
       "id": 4
     },
     {
       "stroke": false,
-      "action": "faire valise",
-      "listId": 7,
+      "action": "Log In",
+      "listId": 2,
       "id": 5
     },
     {
       "stroke": false,
-      "action": "New item",
-      "listId": 1,
+      "action": "Dashboard",
+      "listId": 2,
       "id": 6
     },
     {
       "stroke": false,
-      "action": "new item",
-      "listId": 1,
+      "action": "item 1",
+      "listId": 6,
       "id": 7
     },
     {
       "stroke": false,
-      "action": "courses",
-      "listId": 2,
+      "action": "item 2",
+      "listId": 6,
       "id": 8
     },
     {
-      "stroke": true,
-      "action": "nouvelles courses",
-      "listId": 2,
+      "stroke": false,
+      "action": "Faire sa valise",
+      "listId": 7,
       "id": 9
     },
     {
       "stroke": false,
-      "action": "ok",
-      "listId": 2,
+      "action": "Prendre son tapis",
+      "listId": 7,
       "id": 10
-    },
-    {
-      "stroke": true,
-      "action": "parfait",
-      "listId": 2,
-      "id": 11
-    },
-    {
-      "stroke": false,
-      "action": "ça marche très bien ",
-      "listId": 2,
-      "id": 12
-    },
-    {
-      "stroke": false,
-      "action": "mon nouvel item",
-      "listId": 2,
-      "id": 13
-    },
-    {
-      "stroke": false,
-      "action": "ceci est mon nouvel item",
-      "listId": 2,
-      "id": 14
-    },
-    {
-      "stroke": false,
-      "action": "asdasd",
-      "listId": 6,
-      "id": 15
-    },
-    {
-      "stroke": false,
-      "action": "sdad",
-      "listId": 6,
-      "id": 16
-    },
-    {
-      "stroke": false,
-      "action": "asd",
-      "listId": 6,
-      "id": 17
-    },
-    {
-      "stroke": false,
-      "action": "asd",
-      "listId": 6,
-      "id": 18
-    },
-    {
-      "stroke": false,
-      "action": "asd",
-      "listId": 6,
-      "id": 19
-    },
-    {
-      "stroke": false,
-      "action": "Nouvel item",
-      "listId": 4,
-      "id": 20
-    },
-    {
-      "stroke": true,
-      "action": "ma liste",
-      "listId": 4,
-      "id": 21
     }
   ]
 }

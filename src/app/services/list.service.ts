@@ -20,11 +20,11 @@ export class ListService {
   createList(list: List): Observable<List> {
     return this.store.select(selectUserId).pipe(
       take(1),
-      switchMap((userId) => this.httpClient.post<List>(this.path, {...list, userId}))
+      switchMap((userId: string) => this.httpClient.post<List>(this.path, {...list, userId}))
     );
   }
 
-  getLists() {
+  getLists(): Observable<List[]> {
     return this.httpClient.get<List[]>(this.path);
   }
 }

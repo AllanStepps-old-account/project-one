@@ -2,11 +2,11 @@ import {Action} from '@ngrx/store';
 import {User} from '../../models/user.model';
 
 export enum ActionTypes {
-  LOGIN_REQUEST = '[Login] Login Request',
+  LOGIN_REQUEST = '[Login] Request',
   LOGIN_DRY_REQUEST = '[Login] Dry Login Request',
-  LOGIN_FAILURE = '[Login] Login Failure',
-  LOGIN_SUCCESS = '[Login] Login Success',
-  LOGOUT = '[Login] Logout Success'
+  LOGIN_FAILURE = '[Login] Failure',
+  LOGIN_SUCCESS = '[Login] Success',
+  LOGOUT = '[Login] Logout',
 }
 
 export class LoginRequestAction implements Action {
@@ -19,8 +19,6 @@ export class LoginRequestAction implements Action {
 export class LoginDryRequestAction implements Action {
   readonly type = ActionTypes.LOGIN_DRY_REQUEST;
 
-  constructor() {
-  }
 }
 
 export class LoginFailureAction implements Action {
@@ -40,8 +38,6 @@ export class LoginSuccessAction implements Action {
 export class LogoutAction implements Action {
   readonly type = ActionTypes.LOGOUT;
 
-  constructor() {
-  }
 }
 
 export type Actions =
@@ -49,4 +45,5 @@ export type Actions =
   | LoginDryRequestAction
   | LoginFailureAction
   | LoginSuccessAction
-  | LogoutAction;
+  | LogoutAction
+  ;

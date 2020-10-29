@@ -1,6 +1,8 @@
 import { Actions, ActionTypes } from './login.actions';
 import { initialState, State } from './login.state';
 
+export const loginFeatureName = 'auth';
+
 export function loginReducer(state = initialState, action: Actions): State {
   switch (action.type) {
     case ActionTypes.LOGIN_REQUEST:

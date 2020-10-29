@@ -1,16 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ListBreadcrumbComponent} from './list-breadcrumb.component';
+import {ListBreadcrumbModule} from './list-breadcrumb.module';
+import {SharedModule} from '../../shared.module';
 
-import { ListBreadcrumbComponent } from './list-breadcrumb.component';
-
-describe('TodoListComponent', () => {
+xdescribe('ListBreadcrumbComponent', () => {
   let component: ListBreadcrumbComponent;
   let fixture: ComponentFixture<ListBreadcrumbComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListBreadcrumbComponent ]
+      imports: [SharedModule, ListBreadcrumbModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
