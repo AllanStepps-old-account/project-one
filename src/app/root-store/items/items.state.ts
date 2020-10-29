@@ -1,16 +1,10 @@
 import {Item} from '../../models/item.model';
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 
-// export interface State {
-//   [listId: string]: Item[];
-// }
-//
-// export const initialState: State = {};
-
 export const featureAdapter: EntityAdapter<Item> = createEntityAdapter<Item>({
   selectId: model => model.id,
   sortComparer: (a: Item, b: Item): number =>
-    b.id.toString().localeCompare(a.id)
+    parseInt(b.id) - parseInt(a.id)
 });
 
 export interface State extends EntityState<Item> {

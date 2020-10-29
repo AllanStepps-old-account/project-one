@@ -8,6 +8,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SignUpComponent } from './sign-up.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {FlexModule} from '@angular/flex-layout';
+import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -17,15 +19,18 @@ import {CommonModule} from '@angular/common';
     SignUpComponent,
   ],
   imports: [
+    MatToolbarModule,
     MatCardModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    ReactiveFormsModule,
     CommonModule,
+    FlexModule
   ],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+  ]
 })
 export class SignUpModule {
 }

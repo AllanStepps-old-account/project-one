@@ -21,7 +21,24 @@ export function itemsReducer(state = initialState, action: Actions): State {
         isLoading: false,
         error: null
       });
-    case ActionTypes.ITEM_CREATE:
+    case ActionTypes.ITEM_BULK_UPDATE_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null
+      };
+    case ActionTypes.ITEM_BULK_UPDATE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: null
+      };
+    case ActionTypes.ITEM_BULK_UPDATE_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.error
+      };
     default: {
       return state;
     }

@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {selectAllLists, selectListIsLoading} from '../../root-store/lists/lists.selector';
+import {selectAllLists, selectListIsLoading, selectSelectedList, selectSelectedListName} from '../../root-store/lists/lists.selector';
 import {map} from 'rxjs/operators';
 import {List} from '../../models/list.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {CreationMode} from '../list-create/list-create.component';
 
 @Component({
   selector: 'app-todo-lists',
@@ -12,11 +14,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ListsComponent implements OnInit {
 
-  isLoading$ = this.store.select(selectListIsLoading);
+  readonly creationMode = CreationMode;
 
-  lists$ = this.store.select(selectAllLists).pipe(
+  isLoading$: Observable<boolean> = this.store.select(selectListIsLoading);
+
+  lists$: Observable<List[]> = this.store.select(selectAllLists).pipe(
     map(Object.values)
   );
+
 
   constructor(private store: Store, private router: Router, private activatedRoute: ActivatedRoute) {
   }
@@ -24,7 +29,4 @@ export class ListsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToList(list: List) {
-    return this.router.navigate(['list', list.id], {relativeTo: this.activatedRoute.parent});
-  }
 }

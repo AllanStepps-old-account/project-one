@@ -1,13 +1,22 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {Router} from '@angular/router';
-import {SnackBarService} from '../../services/snack-bar/snack-bar.service';
 import {ItemService} from '../../services/item.service';
-import {Observable} from 'rxjs';
+import {interval, Observable, of} from 'rxjs';
 import {Action} from '@ngrx/store';
-import {map, mergeMap} from 'rxjs/operators';
+import {catchError, debounceTime, map, mergeMap, scan, switchMap, takeWhile, withLatestFrom} from 'rxjs/operators';
 import {Item} from '../../models/item.model';
-import {ActionTypes, ItemCreateAction, ItemCreatedAction, ItemGetAllAction, ItemGetAllSuccessAction} from './items.actions';
+import {
+  ActionTypes,
+  ItemBulkUpdateFailureAction,
+  ItemBulkUpdateRequestAction,
+  ItemBulkUpdateSuccessAction,
+  ItemCreateAction,
+  ItemCreatedAction,
+  ItemEditAction,
+  ItemGetAllAction,
+  ItemGetAllSuccessAction
+} from './items.actions';
+import {Update} from '@ngrx/entity';
 
 @Injectable()
 export default class ItemsEffects {
@@ -31,11 +40,27 @@ export default class ItemsEffects {
     ))
   );
 
-  ItemGetAllAction;
+  @Effect()
+  itemEditEffect$: Observable<Action> = this.actions$.pipe(
+    ofType<ItemEditAction>(ActionTypes.ITEM_EDIT),
+    map((action) => action.payload),
+    // scan((acc, {item}) => ({...acc, [item.id]: item}), {}),
+    // debounceTime(1000),
+    map((items) => Object.values(items)),
+    map((items: Update<Item>[]) => new ItemBulkUpdateRequestAction({items}))
+  );
+
+  @Effect()
+  itemBulkUpdateRequestEffect$: Observable<Action> = this.actions$.pipe(
+    ofType<ItemBulkUpdateRequestAction>(ActionTypes.ITEM_BULK_UPDATE_REQUEST),
+    map((action) => action.payload),
+    mergeMap(({items}) => this.itemService.sendUpdates(items).pipe(
+      map((items: Item[]) => new ItemBulkUpdateSuccessAction({items})),
+      catchError((error) => of(new ItemBulkUpdateFailureAction({error}))),
+    ))
+  );
 
   constructor(private itemService: ItemService,
-              private actions$: Actions,
-              private router: Router,
-              private snackBarService: SnackBarService) {
+              private actions$: Actions) {
   }
 }

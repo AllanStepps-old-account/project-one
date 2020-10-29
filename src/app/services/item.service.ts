@@ -1,9 +1,10 @@
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {forkJoin, Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {Item} from '../models/item.model';
+import {Update} from '@ngrx/entity';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class ItemService {
 
   getItems() {
     return this.httpClient.get<Item[]>(this.path);
+  }
+
+  sendUpdates(items: Update<Item>[]) {
+    return forkJoin(items.map(({id, changes}) => this.httpClient.patch(this.path + '/' + id, {...changes})));
   }
 }

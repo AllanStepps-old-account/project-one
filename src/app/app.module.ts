@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
 import {DashboardModule} from './flow/dashboard/dashboard.module';
 import {LandingModule} from './flow/landing/landing.module';
 import {SignUpModule} from './components/sign-up/sign-up.module';
@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LoginModule} from './components/login/login.module';
 import {AuthInterceptor} from './interceptors/jwt.interceptor';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {AuthInterceptor} from './interceptors/jwt.interceptor';
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    FlexModule,
 
     DashboardModule,
     LandingModule,
@@ -33,6 +35,7 @@ import {AuthInterceptor} from './interceptors/jwt.interceptor';
 
     MatToolbarModule,
     MatButtonModule,
+    MatIconModule,
   ],
   providers: [
     HttpClientModule,

@@ -1,24 +1,17 @@
-<mat-toolbar>
-  <span>List Info</span>
-</mat-toolbar>
-
 <ng-container *ngIf="list$ | async as list">
-  Name of the list :
-  (edit name of the list) :
-
-  Items :
-  <ng-container *ngIf="items$ | async as items">
-
-    <ul>
-      <li *ngFor="let item of items">
+  <h1>{{list.name}}</h1>
+  <mat-list>
+    <mat-list-item fxLayout="row" fxFlexFill>
+      <app-item-create [listId]="(list$ | async).id"></app-item-create>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <ng-container *ngFor="let item of items$ | async">
+      <mat-list-item>
         <mat-checkbox [checked]="item.stroke" (change)="toggleItemStroke(item)">
-          <span [class.stroke]="item.stroke">{{item | json}}</span>
+          <span [class.stroke]="item.stroke">{{item.action}}</span>
         </mat-checkbox>
-      </li>
-    </ul>
-
-  </ng-container>
-
-
-  <app-todo-list-create [listId]="(list$ | async).id"></app-todo-list-create>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-list>
 </ng-container>

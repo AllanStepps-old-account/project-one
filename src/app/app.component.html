@@ -1,11 +1,23 @@
-<mat-toolbar color="primary" class="expanded-toolbar">
-  isAuthenticated : {{ isAuthenticated$ | async | json }}
-  <ng-container *ngIf="isAuthenticated$ | async; else logInTemplate">
-    <button mat-button (click)="logout()"> LOG ME OUT</button>
-  </ng-container>
-  <ng-template #logInTemplate>
-    <button mat-button (click)="login()"> FORCE LOG ME IN</button>
-  </ng-template>
-</mat-toolbar>
+<div fxLayout="column" fxFlexFill>
+  <mat-toolbar *ngIf="isAuthenticated$ | async"
+               color="primary"
+               class="dashboard-toolbar"
+               fxLayoutAlign="space-between center">
 
-<router-outlet></router-outlet>
+    <button mat-icon-button [routerLink]="['dashboard']">
+      <mat-icon>home</mat-icon>
+    </button>
+
+    <div>
+      <button mat-button [routerLink]="['edit-user']">
+        Edit my profile
+      </button>
+      <button mat-button (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div fxFlex class="background" [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</div>

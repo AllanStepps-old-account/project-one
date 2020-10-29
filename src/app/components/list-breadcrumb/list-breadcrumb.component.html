@@ -1,0 +1,6 @@
+<div class="breadcrumb">
+  <a [routerLink]="['lists']">All lists</a>
+  <ng-container *ngIf="selectedListName$ | async as listName">
+    > {{ listName }}
+  </ng-container>
+</div>

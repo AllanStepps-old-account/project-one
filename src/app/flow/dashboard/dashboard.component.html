@@ -1,5 +1,16 @@
-<p>dashboard works!</p>
-
-<a mat-button [routerLink]="['/']">back to list</a>
-
-<router-outlet></router-outlet>
+<div
+  fxLayout="row"
+  fxLayout.xs="row"
+  fxFlexFill
+  fxLayoutAlign="center center">
+  <mat-card class="dashboard-container"
+            fxFlex="100%"
+            fxFlex.md="80%"
+            fxFlex.gt-md="50%"
+            fxLayout="column">
+    <div fxFlex fxFlexFill>
+      <app-list-breadcrumb></app-list-breadcrumb>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-card>
+</div>

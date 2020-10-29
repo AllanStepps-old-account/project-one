@@ -17,6 +17,11 @@ export const selectSelectedList: MemoizedSelector<object, List> = createSelector
   (lists, params) => lists.find(list => list.id == params.id)
 );
 
+export const selectSelectedListName: MemoizedSelector<object, string> = createSelector(
+  selectSelectedList,
+  (list) => list?.name
+);
+
 export const selectListError: MemoizedSelector<object, any> = createSelector(
   selectListState,
   getError

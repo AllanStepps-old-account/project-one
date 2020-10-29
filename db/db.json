@@ -6,6 +6,13 @@
       "firstName": "Allan",
       "lastName": "Stepps",
       "id": 2
+    },
+    {
+      "email": "abcd@astp.me",
+      "password": "$2a$10$QHKbgK2tEDA6x5m3rn8EEe1vixn2ef38k9SB5hBGYnuhrOP3coS86",
+      "firstName": "Allan",
+      "lastName": "Stepps",
+      "id": 3
     }
   ],
   "lists": [
@@ -20,29 +27,14 @@
       "id": 2
     },
     {
-      "name": "MA LISTE",
+      "name": "Ma nouvelle liste",
       "userId": 2,
       "id": 3
     },
     {
-      "name": "NEW LIST",
+      "name": "asdad",
       "userId": 2,
       "id": 4
-    },
-    {
-      "name": "NEW LISTE",
-      "userId": 2,
-      "id": 5
-    },
-    {
-      "name": "TEST LIST ",
-      "userId": 2,
-      "id": 6
-    },
-    {
-      "name": "cristina",
-      "userId": 2,
-      "id": 7
     }
   ],
   "items": [
@@ -87,6 +79,90 @@
       "action": "new item",
       "listId": 1,
       "id": 7
+    },
+    {
+      "stroke": false,
+      "action": "courses",
+      "listId": 2,
+      "id": 8
+    },
+    {
+      "stroke": true,
+      "action": "nouvelles courses",
+      "listId": 2,
+      "id": 9
+    },
+    {
+      "stroke": false,
+      "action": "ok",
+      "listId": 2,
+      "id": 10
+    },
+    {
+      "stroke": true,
+      "action": "parfait",
+      "listId": 2,
+      "id": 11
+    },
+    {
+      "stroke": false,
+      "action": "ça marche très bien ",
+      "listId": 2,
+      "id": 12
+    },
+    {
+      "stroke": false,
+      "action": "mon nouvel item",
+      "listId": 2,
+      "id": 13
+    },
+    {
+      "stroke": false,
+      "action": "ceci est mon nouvel item",
+      "listId": 2,
+      "id": 14
+    },
+    {
+      "stroke": false,
+      "action": "asdasd",
+      "listId": 6,
+      "id": 15
+    },
+    {
+      "stroke": false,
+      "action": "sdad",
+      "listId": 6,
+      "id": 16
+    },
+    {
+      "stroke": false,
+      "action": "asd",
+      "listId": 6,
+      "id": 17
+    },
+    {
+      "stroke": false,
+      "action": "asd",
+      "listId": 6,
+      "id": 18
+    },
+    {
+      "stroke": false,
+      "action": "asd",
+      "listId": 6,
+      "id": 19
+    },
+    {
+      "stroke": false,
+      "action": "Nouvel item",
+      "listId": 4,
+      "id": 20
+    },
+    {
+      "stroke": true,
+      "action": "ma liste",
+      "listId": 4,
+      "id": 21
     }
   ]
 }

@@ -52,8 +52,9 @@ export class UserService {
     );
   }
 
-  signUp(user: User): Observable<User> {
-    return this.httpClient.post<User>(this.path, {...user}).pipe(
+  signUp(user: User): Observable<{ accessToken:string }> {
+    return this.httpClient.post<{ accessToken:string }>(this.path, {...user}).pipe(
+      tap(({accessToken}) => this.accessToken = accessToken),
       catchError((error) => throwError(error.error))
     );
   }

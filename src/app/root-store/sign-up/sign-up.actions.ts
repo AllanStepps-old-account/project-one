@@ -24,7 +24,7 @@ export class SignUpFailureAction implements Action {
 export class SignUpSuccessAction implements Action {
   readonly type = ActionTypes.SIGN_UP_SUCCESS;
 
-  constructor(public payload: { user: User }) {
+  constructor(public payload: { accessToken: string }) {
   }
 }
 

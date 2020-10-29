@@ -10,6 +10,8 @@ import {CommonModule} from '@angular/common';
 import {ListComponent} from './list.component';
 import {ItemCreateModule} from '../item-create/item-create.module';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {FlexModule} from '@angular/flex-layout';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     CommonModule,
     ItemCreateModule,
     FormsModule,
+    FlexModule,
+    MatListModule,
   ],
 })
 export class ListModule {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {ActivatedRoute, Router} from '@angular/router';
 import {selectSelectedList} from '../../root-store/lists/lists.selector';
@@ -7,9 +7,10 @@ import {Item} from '../../models/item.model';
 import {ItemEditAction} from '../../root-store/items/items.actions';
 import {Observable} from 'rxjs';
 import {List} from '../../models/list.model';
+import {Form} from '@angular/forms';
 
 @Component({
-  selector: 'app-todo-list-display',
+  selector: 'app-list-display',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })

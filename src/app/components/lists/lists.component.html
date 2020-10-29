@@ -1,20 +1,15 @@
-<ng-container *ngIf="isLoading$ | async; else listTemplate">
-  <mat-progress-spinner
-    class="example-margin"
-    mode="indeterminate"></mat-progress-spinner>
-</ng-container>
-
-<ng-template #listTemplate>
-  <p>todo-lists works!</p>
-
-  ALL LISTS
-  <ul>
-    <li *ngFor="let list of lists$ | async">
-      {{ list.name }} (id: {{ list.id }}), <a mat-button (click)="goToList(list)">go to the list</a>
-    </li>
-  </ul>
-
-
-  NEW
-  <app-todo-list-create></app-todo-list-create>
-</ng-template>
+<h1>Lists</h1>
+<mat-list>
+  <mat-list-item>
+    <app-list-create [mode]="creationMode.FAST"></app-list-create>
+    <mat-progress-spinner diameter="16" mode="indeterminate"
+                          *ngIf="(isLoading$ | async) === true"></mat-progress-spinner>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <ng-container *ngFor="let list of (lists$ | async)">
+    <mat-list-item>
+      <app-list-overview [list]="list"></app-list-overview>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </ng-container>
+</mat-list>

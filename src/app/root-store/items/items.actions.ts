@@ -9,6 +9,14 @@ export enum ActionTypes {
   ITEM_DELETE = '[Item] Delete Existing Item',
   ITEM_GET_ALL = '[ITEM] Get All',
   ITEM_GET_ALL_SUCCESS = '[ITEM] Get All Success',
+
+
+  ITEM_SEND_EDITS = '[Item] Send Edits',
+
+
+  ITEM_BULK_UPDATE_REQUEST = '[Item] Bulk Update Request',
+  ITEM_BULK_UPDATE_SUCCESS = '[Item] Bulk Update Success',
+  ITEM_BULK_UPDATE_FAILURE = '[Item] Bulk Update Failure',
 }
 
 export class ItemCreateAction implements Action {
@@ -29,6 +37,13 @@ export class ItemEditAction implements Action {
   readonly type = ActionTypes.ITEM_EDIT;
 
   constructor(public payload: { item: Update<Item> }) {
+  }
+}
+
+export class ItemSendEditsAction implements Action {
+  readonly type = ActionTypes.ITEM_SEND_EDITS;
+
+  constructor(public payload: { items: { [id: string]: Update<Item> } }) {
   }
 }
 
@@ -54,6 +69,28 @@ export class ItemGetAllSuccessAction implements Action {
   }
 }
 
+export class ItemBulkUpdateRequestAction implements Action {
+  readonly type = ActionTypes.ITEM_BULK_UPDATE_REQUEST;
+
+  constructor(public payload: { items: Update<Item>[] }) {
+  }
+}
+
+export class ItemBulkUpdateSuccessAction implements Action {
+  readonly type = ActionTypes.ITEM_BULK_UPDATE_SUCCESS;
+
+  constructor(public payload: { items: Item[] }) {
+  }
+}
+
+export class ItemBulkUpdateFailureAction implements Action {
+  readonly type = ActionTypes.ITEM_BULK_UPDATE_FAILURE;
+
+  constructor(public payload: { error: string }) {
+  }
+}
+
+
 export type Actions =
   | ItemCreateAction
   | ItemCreatedAction
@@ -61,4 +98,7 @@ export type Actions =
   | ItemDeleteAction
   | ItemGetAllAction
   | ItemGetAllSuccessAction
+  | ItemBulkUpdateRequestAction
+  | ItemBulkUpdateSuccessAction
+  | ItemBulkUpdateFailureAction
   ;

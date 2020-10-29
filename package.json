@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:server": "json-server-auth --watch db/db.json -r routes.json"
+    "start:server": "json-server-auth --watch db/db.json -r routes.json",
+    "serve:build": "json-server-auth --watch db/db.json -r routes.json --static ./dist/app"
   },
   "private": true,
   "dependencies": {

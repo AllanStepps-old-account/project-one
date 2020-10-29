@@ -12,6 +12,11 @@ import {ListModule} from '../list/list.module';
 import {RouterModule} from '@angular/router';
 import {ListCreateModule} from '../list-create/list-create.module';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {ListOverviewModule} from '../list-overview/list-overview.module';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {FlexModule} from '@angular/flex-layout';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ListModule,
     RouterModule,
     ListCreateModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ListOverviewModule,
+    MatGridListModule,
+    FlexModule,
+    MatListModule,
+    MatDividerModule
   ],
 })
 export class ListsModule {
