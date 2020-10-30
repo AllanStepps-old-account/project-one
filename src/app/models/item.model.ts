@@ -4,5 +4,5 @@ export interface Item {
   id: string;
   listId: List['id'],
   action: string;
-  stroke: boolean;
+  done: boolean;
 }

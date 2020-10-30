@@ -1,5 +1,5 @@
 <ng-container *ngIf="item">
-  <mat-checkbox [checked]="item.stroke" (change)="toggleItemStroke(item)">
-    <span [class.stroke]="item.stroke">{{item.action}}</span>
+  <mat-checkbox [checked]="item.done" (change)="toggleItemDone(item)">
+    <span [class.done]="item.done">{{item.action}}</span>
   </mat-checkbox>
 </ng-container>

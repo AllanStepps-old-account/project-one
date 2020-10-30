@@ -28,7 +28,7 @@ describe('ItemsEffect', () => {
   });
 
   it('should return a stream with items loaded action', () => {
-    const items: Item[] = [{id: '1', action: '1', stroke: false, listId: '3'}];
+    const items: Item[] = [{id: '1', action: '1', done: false, listId: '3'}];
     const action = new ItemLoadRequestAction();
     const outcome = new ItemLoadSuccessAction({items});
 

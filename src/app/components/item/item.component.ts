@@ -18,12 +18,12 @@ export class ItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleItemStroke(item: Item) {
+  toggleItemDone(item: Item) {
     this.store.dispatch(new ItemUpdateRequestAction({
       item: {
         id: item.id,
         changes: {
-          stroke: !item.stroke
+          done: !item.done
         }
       }
     }));

@@ -2,165 +2,49 @@
   "users": [
     {
       "email": "abc@astp.me",
-      "password": "$2a$10$u.gAad9eLiwLYoYG3WW9ZOMbvutkzK8VYU3MlTZLynr2jfiurZoay",
+      "password": "$2a$10$lFdzsqyFkV/c9d0g9eunY.pb/2oveGFi5ZiuRdD0g/Uaf.J5BMl9O",
       "firstName": "Allan",
       "lastName": "Stepps",
       "id": 1
-    },
-    {
-      "email": "abcd@astp.me",
-      "password": "$2a$10$TMR13eiv7C0PlWU1sE2QIO.hcJR03rc9St1XpTr8SwA4U1EzKcv.q",
-      "firstName": "Allan",
-      "lastName": "Stepps",
-      "id": 2
     }
   ],
   "lists": [
     {
-      "name": "My New List ",
+      "name": "Project One",
       "userId": 1,
       "id": 1
-    },
-    {
-      "name": "Nouvelle liste",
-      "userId": 1,
-      "id": 2
-    },
-    {
-      "name": "list 2",
-      "userId": 1,
-      "id": 3
-    },
-    {
-      "name": "list4",
-      "userId": 1,
-      "id": 4
-    },
-    {
-      "name": "avx",
-      "userId": 1,
-      "id": 5
-    },
-    {
-      "name": "TU commes ici",
-      "userId": 1,
-      "id": 6
     }
   ],
   "items": [
     {
-      "stroke": true,
-      "action": "This is my new list",
+      "done": true,
+      "action": "Créer l'application",
       "listId": 1,
       "id": 1
     },
     {
-      "stroke": true,
-      "action": "new item",
+      "done": true,
+      "action": "Ajouter un layout",
       "listId": 1,
       "id": 2
     },
     {
-      "stroke": false,
-      "action": "item 2",
-      "listId": 2,
+      "done": true,
+      "action": "Créer des listes",
+      "listId": 1,
       "id": 3
     },
     {
-      "stroke": false,
-      "action": "item 1",
-      "listId": 2,
+      "done": true,
+      "action": "Créer des items",
+      "listId": 1,
       "id": 4
     },
     {
-      "stroke": false,
-      "action": "def",
-      "listId": 3,
+      "done": false,
+      "action": "Faire des tests unitaires",
+      "listId": 1,
       "id": 5
-    },
-    {
-      "stroke": false,
-      "action": "abc",
-      "listId": 3,
-      "id": 6
-    },
-    {
-      "stroke": false,
-      "action": "liste 2",
-      "listId": 4,
-      "id": 7
-    },
-    {
-      "stroke": false,
-      "action": "liste 1",
-      "listId": 4,
-      "id": 8
-    },
-    {
-      "stroke": true,
-      "action": "nouvel item",
-      "listId": 5,
-      "id": 9
-    },
-    {
-      "stroke": false,
-      "action": "asdda",
-      "listId": 5,
-      "id": 10
-    },
-    {
-      "stroke": false,
-      "action": "asd",
-      "listId": 5,
-      "id": 11
-    },
-    {
-      "stroke": false,
-      "action": "ada",
-      "listId": 5,
-      "id": 12
-    },
-    {
-      "stroke": false,
-      "action": "sd",
-      "listId": 5,
-      "id": 13
-    },
-    {
-      "stroke": false,
-      "action": "asd",
-      "listId": 5,
-      "id": 14
-    },
-    {
-      "stroke": true,
-      "action": "asddas",
-      "listId": 5,
-      "id": 15
-    },
-    {
-      "stroke": false,
-      "action": "asd",
-      "listId": 6,
-      "id": 16
-    },
-    {
-      "stroke": false,
-      "action": "adas",
-      "listId": 6,
-      "id": 17
-    },
-    {
-      "stroke": false,
-      "action": "asd",
-      "listId": 6,
-      "id": 18
-    },
-    {
-      "stroke": false,
-      "action": "asdasd",
-      "listId": 6,
-      "id": 19
     }
   ]
 }

@@ -17,7 +17,7 @@ export class ItemService {
 
   createItem(item: Item, listId: string): Observable<Item> {
     item = {
-      stroke: false, // before is default
+      done: false, // before is default
       ...item,
       listId // after is overwrite
     };
@@ -47,7 +47,7 @@ export class ItemService {
 
   prepareItems(items: Partial<Item>[], listId: string): Item[] {
     return items.map((item) => ({
-      stroke: false,
+      done: false,
       ...item,
       listId
     } as Item));

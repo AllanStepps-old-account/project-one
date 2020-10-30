@@ -33,16 +33,16 @@ describe('ItemComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should toggle stroke', () => {
-    const item: Required<Item> = {id: '1', action: 'my-item', stroke: false, listId: '1'};
+  it('should toggle done', () => {
+    const item: Required<Item> = {id: '1', action: 'my-item', done: false, listId: '1'};
 
     component.item = item;
-    component.toggleItemStroke(item);
+    component.toggleItemDone(item);
 
     expect(itemServiceMock.update).toHaveBeenCalledWith({
       id: '1',
       changes: {
-        stroke: true
+        done: true
       }
     });
   });
