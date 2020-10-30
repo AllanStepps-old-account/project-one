@@ -1,4 +1,4 @@
-<h1>{{list.name}}</h1>
+<h1>{{(list$ | async).name}}</h1>
 <mat-list>
   <mat-list-item fxLayout="row" fxFlexFill>
     <app-item-create [list]="list" [listId]="(list$ | async)?.id"></app-item-create>
