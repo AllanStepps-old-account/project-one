@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "run-p start:server serve",
+    "start": "run-p json-server serve",
     "serve": "ng serve -o",
+    "serve:build": "npm run json-server -- --static ./dist/app",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:server": "json-server-auth --watch db/db.json -r routes.json",
-    "serve:build": "json-server-auth --watch db/db.json -r routes.json --static ./dist/app"
+    "json-server": "json-server-auth --watch db/db.json -r routes.json"
   },
   "private": true,
   "dependencies": {
