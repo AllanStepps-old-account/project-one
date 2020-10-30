@@ -11,7 +11,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {CommonModule} from '@angular/common';
 import {ListBreadcrumbModule} from '../../components/list-breadcrumb/list-breadcrumb.module';
-import {CreationMode, ListCreateComponent} from '../../components/list-create/list-create.component';
+import {ListCreateComponent} from '../../components/list-create/list-create.component';
 
 
 export const routes: Routes = [
@@ -20,7 +20,7 @@ export const routes: Routes = [
       {path: '', redirectTo: '/dashboard/lists', pathMatch: 'full'},
       {path: 'lists', component: ListsComponent},
       {path: 'list/create', component: ListCreateComponent},
-      {path: 'list/:id', component: ListComponent, data: {animation: 'ListPage'}},
+      {path: 'list/:id', component: ListComponent},
     ]
   }
 ];

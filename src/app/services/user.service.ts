@@ -82,9 +82,6 @@ export class UserService {
 
     if (accessToken) {
       const {sub, exp} = parseJwt(accessToken);
-
-      console.log('sub', sub);
-
       if (!isJwtExpired(exp)) {
         return this.getUser(sub);
       } else {
@@ -105,9 +102,6 @@ export class UserService {
   }
 
   private getUser(id: string): Observable<User> {
-
-    console.log('GET USER', id);
-
     return this.httpClient.get<User>(this.path + '/' + id).pipe(
       catchError((error) => throwError(error.error))
     );

@@ -1,7 +1,5 @@
 <div fxLayout="column" fxFlexFill>
   <mat-toolbar *ngIf="isAuthenticated$ | async"
-               color=""
-               class="dashboard-toolbar"
                fxLayoutAlign="space-between center">
 
     <button mat-icon-button [routerLink]="['dashboard']">
@@ -17,7 +15,7 @@
       </button>
     </div>
   </mat-toolbar>
-  <div fxFlex class="background" [@routeAnimations]="prepareRoute(outlet)">
-    <router-outlet #outlet="outlet"></router-outlet>
+  <div fxFlex class="background">
+    <router-outlet></router-outlet>
   </div>
 </div>

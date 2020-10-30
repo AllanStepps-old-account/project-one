@@ -2,18 +2,20 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Action} from '@ngrx/store';
 import {Observable, of as observableOf} from 'rxjs';
-import {catchError, map, switchMap} from 'rxjs/operators';
+import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {
   ActionTypes as signUpActionTypes,
   ActionTypes,
   SignUpFailureAction,
   SignUpRequestAction,
-  SignUpSuccessAction, SignUpUpdateRequestAction,
+  SignUpSuccessAction,
+  SignUpUpdateRequestAction,
   SignUpUpdateSuccessAction,
 } from './sign-up.actions';
 import {UserService} from '../../services/user.service';
 import {LoginFailureAction, LoginSuccessAction} from '../login/login.actions';
 import {User} from '../../models/user.model';
+import {Router} from '@angular/router';
 
 @Injectable()
 export default class SignUpEffects {
@@ -49,10 +51,11 @@ export default class SignUpEffects {
     switchMap(() => this.userService.loginFromStorage()
       .pipe(
         map((user: User) => new LoginSuccessAction({user})),
+        tap(() => this.router.navigate(['dashboard'])),
         catchError((error) => observableOf(new LoginFailureAction({error}))),
       ))
   );
 
-  constructor(private userService: UserService, private actions$: Actions) {
+  constructor(private userService: UserService, private actions$: Actions, private router: Router) {
   }
 }

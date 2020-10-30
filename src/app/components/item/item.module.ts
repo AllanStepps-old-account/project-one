@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {ItemComponent} from './item.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,8 @@ import {ItemComponent} from './item.component';
     ItemComponent,
   ],
   imports: [
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    ReactiveFormsModule,
-    CommonModule,
+    MatCheckboxModule,
+    CommonModule
   ],
 })
 export class ItemModule {

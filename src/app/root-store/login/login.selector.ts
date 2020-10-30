@@ -15,9 +15,9 @@ const getUser = (state: State): any => state.user;
 
 const getIsAuth = (state: State): boolean => !!state.user;
 
-const getFirstName = (state: State): string => state.user.firstName;
+const getFirstName = (state: State): string => state.user?.firstName;
 
-const getUserId = (state: State): string => state.user.id;
+const getUserId = (state: State): string => state.user?.id;
 
 export const selectLoginState: MemoizedSelector<object, State> = createFeatureSelector<State>(loginFeatureName);
 

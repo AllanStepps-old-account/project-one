@@ -1,7 +1,7 @@
 <div>
   <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <input matInput placeholder="Nouvel item..." formControlName="action"/>
+      <input matInput placeholder="Nouvel item..." formControlName="action" autocomplete="off"/>
       <mat-hint>Ajouter un nouvel élément et appuyez sur la touche Entrée</mat-hint>
     </mat-form-field>
   </form>

@@ -1,23 +1,21 @@
-<h1>{{(list$ | async).name}}</h1>
-<mat-list>
-  <mat-list-item fxLayout="row" fxFlexFill>
-    <app-item-create [list]="list" [listId]="(list$ | async)?.id"></app-item-create>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <ng-container *ngFor="let item of items$ | async">
-    <mat-list-item>
-      <mat-checkbox [checked]="item.stroke" (change)="toggleItemStroke(item)">
-        <span [class.stroke]="item.stroke">{{item.action}}</span>
-      </mat-checkbox>
+<ng-container *ngIf="((list$ | async) || list) as asyncList">
+  <h1>{{asyncList.name}}</h1>
+  <mat-list>
+    <mat-list-item fxLayout="row" fxFlexFill>
+      <app-item-create [list]="list" [listId]="asyncList.id"></app-item-create>
     </mat-list-item>
     <mat-divider></mat-divider>
-  </ng-container>
-  <ng-container *ngFor="let item of list?.items">
-    <mat-list-item>
-      <mat-checkbox [checked]="item.stroke" (change)="toggleItemStroke(item)">
-        <span [class.stroke]="item.stroke">{{item.action}}</span>
-      </mat-checkbox>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-  </ng-container>
-</mat-list>
+    <ng-container *ngFor="let item of items$ | async">
+      <mat-list-item>
+        <app-item [item]="item"></app-item>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+    <ng-container *ngFor="let item of list?.items">
+      <mat-list-item>
+        <app-item [item]="item"></app-item>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-list>
+</ng-container>

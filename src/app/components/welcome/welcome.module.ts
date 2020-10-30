@@ -3,6 +3,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {WelcomeComponent} from './welcome.component';
 import {RouterModule} from '@angular/router';
+import {FlexModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -11,11 +12,12 @@ import {RouterModule} from '@angular/router';
   exports: [
     WelcomeComponent,
   ],
-  imports: [
-    RouterModule,
-    MatCardModule,
-    MatButtonModule
-  ],
+    imports: [
+        RouterModule,
+        MatCardModule,
+        MatButtonModule,
+        FlexModule
+    ],
 })
 export class WelcomeModule {
 }

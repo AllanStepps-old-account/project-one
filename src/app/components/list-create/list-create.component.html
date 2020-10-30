@@ -2,14 +2,15 @@
   <form [formGroup]="listForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Name of the list</mat-label>
-      <input matInput placeholder="Name of the list" formControlName="name" required>
+      <input matInput placeholder="Name of the list" formControlName="name" required #name>
     </mat-form-field>
 
     <ng-container *ngIf="mode === creationMode.FAST">
       <button mat-raised-button type="submit" [disabled]="!listForm.valid || (isLoading$ | async)" color="primary">
         CREATE
       </button>
-      <a mat-button color="accent" [routerLink]="['../list/create']">ADVANCED CREATION</a>
+      <a mat-button color="accent" (click)="goToAdvancedMode()">ADVANCED
+        CREATION</a>
     </ng-container>
 
     <ng-container *ngIf="mode === creationMode.COMPLETE">

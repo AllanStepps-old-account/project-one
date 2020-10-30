@@ -1,21 +1,29 @@
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-
+import {ItemService} from '../../services/item.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {AppModule} from '../../app.module';
+import {SpyHelper} from '../../helpers/spy.helper';
 import {ItemComponent} from './item.component';
-import {ItemModule} from './item.module';
-import {SharedModule} from '../../shared.module';
+import {Item} from '../../models/item.model';
 
-describe('TodoItemComponent', () => {
+describe('ItemComponent', () => {
   let component: ItemComponent;
   let fixture: ComponentFixture<ItemComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [SharedModule, ItemModule]
-    })
-      .compileComponents();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [AppModule, HttpClientTestingModule],
+      providers: [SpyHelper.provideMagicalMock(ItemService)],
+      schemas: [NO_ERRORS_SCHEMA]
+    }).compileComponents();
   });
 
+  let itemServiceMock;
+
   beforeEach(() => {
+    itemServiceMock = TestBed.inject(ItemService);
+
     fixture = TestBed.createComponent(ItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -24,4 +32,19 @@ describe('TodoItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle stroke', () => {
+    const item: Required<Item> = {id: '1', action: 'my-item', stroke: false, listId: '1'};
+
+    component.item = item;
+    component.toggleItemStroke(item);
+
+    expect(itemServiceMock.update).toHaveBeenCalledWith({
+      id: '1',
+      changes: {
+        stroke: true
+      }
+    });
+  });
+
 });
