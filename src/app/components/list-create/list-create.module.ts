@@ -11,6 +11,7 @@ import {ListCreateComponent} from './list-create.component';
 import {ExtendedModule, FlexModule} from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import {ListModule} from '../list/list.module';
+import {ItemCreateModule} from '../item-create/item-create.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {ListModule} from '../list/list.module';
     ExtendedModule,
     RouterModule,
     ListModule,
+    ItemCreateModule,
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'legacy', floatLabel: 'never', hideRequiredMarker: true}}

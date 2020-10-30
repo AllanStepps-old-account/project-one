@@ -14,6 +14,9 @@ import {
   ListLoadRequestAction,
   ListLoadSuccessAction
 } from './lists.actions';
+import {ItemService} from '../../services/item.service';
+import {Item} from '../../models/item.model';
+import {ItemCreateFailureAction, ItemCreateSuccessAction} from '../items/items.actions';
 
 @Injectable()
 export default class ListsEffects {
@@ -21,10 +24,26 @@ export default class ListsEffects {
   @Effect()
   listCreateEffect$: Observable<Action> = this.actions$.pipe(
     ofType<ListCreateRequestAction>(ActionTypes.LIST_CREATE_REQUEST),
-    mergeMap((action) => this.listService.createList(action.payload.list).pipe(
-      map((list: List) => new ListCreateSuccessAction({list})),
+    map((action) => action.payload),
+    mergeMap(({list, items}) => this.listService.createList(list).pipe(
+      map((list: List) => new ListCreateSuccessAction({list, items})),
       catchError((error) => of(new ListCreateFailureAction({error}))),
     ))
+  );
+
+  @Effect()
+  listCreateSuccessEffect$: Observable<Action> = this.actions$.pipe(
+    ofType<ListCreateSuccessAction>(ActionTypes.LIST_CREATE_SUCCESS),
+    map((action) => action.payload),
+    mergeMap(({items, list}) => {
+      if (items) {
+        items = this.itemService.prepareItems(items, list.id);
+        return this.itemService.createItems(items).pipe(
+          map((items: Item[]) => new ItemCreateSuccessAction({items})),
+          catchError((error) => of(new ItemCreateFailureAction({error}))),
+        );
+      }
+    })
   );
 
   @Effect()
@@ -37,6 +56,7 @@ export default class ListsEffects {
   );
 
   constructor(private listService: ListService,
+              private itemService: ItemService,
               private actions$: Actions) {
   }
 }

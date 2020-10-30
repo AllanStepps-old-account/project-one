@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroupDirective} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {ListCreateRequestAction} from '../../root-store/lists/lists.actions';
 import {selectListIsLoading} from '../../root-store/lists/lists.selector';
 import {Observable} from 'rxjs';
+import {CreationList} from '../../models/creation-list.model';
 
 export enum CreationMode {
   FAST = 'fast',
@@ -20,6 +21,8 @@ export class ListCreateComponent implements OnInit {
   @Input()
   mode: CreationMode = CreationMode.COMPLETE;
 
+  @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
+
   readonly creationMode = CreationMode;
 
   readonly isLoading$: Observable<boolean> = this.store.select(selectListIsLoading);
@@ -27,6 +30,8 @@ export class ListCreateComponent implements OnInit {
   listForm = this.formBuilder.group({
     name: '',
   });
+
+  creationList: CreationList = {name: '', items: []};
 
   constructor(private formBuilder: FormBuilder, private store: Store) {
   }
@@ -36,8 +41,12 @@ export class ListCreateComponent implements OnInit {
 
   onSubmit() {
     const list = this.listForm.value;
-    this.store.dispatch(new ListCreateRequestAction({list}));
-    this.listForm.reset();
-  }
+    const items = this.creationList.items;
 
+    this.store.dispatch(new ListCreateRequestAction({list, items}));
+
+    if (this.mode === CreationMode.FAST) {
+      setTimeout(() => this.formGroupDirective.resetForm(), 200); // give some style to the clear
+    }
+  }
 }

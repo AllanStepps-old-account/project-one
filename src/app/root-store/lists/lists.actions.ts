@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {List} from '../../models/list.model';
+import {Item} from '../../models/item.model';
 
 export enum ActionTypes {
   LIST_LOAD_REQUEST = '[List] Load Request',
@@ -36,14 +37,14 @@ export class ListLoadFailureAction implements Action {
 export class ListCreateRequestAction implements Action {
   readonly type = ActionTypes.LIST_CREATE_REQUEST;
 
-  constructor(public payload: { list: List }) {
+  constructor(public payload: { list: List, items?: Item[] }) {
   }
 }
 
 export class ListCreateSuccessAction implements Action {
   readonly type = ActionTypes.LIST_CREATE_SUCCESS;
 
-  constructor(public payload: { list: List }) {
+  constructor(public payload: { list: List, items?: Item[] }) {
   }
 }
 

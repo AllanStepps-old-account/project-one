@@ -2,7 +2,6 @@ import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {forkJoin, Observable} from 'rxjs';
-import {Store} from '@ngrx/store';
 import {Item} from '../models/item.model';
 import {Update} from '@ngrx/entity';
 
@@ -26,6 +25,13 @@ export class ItemService {
     return this.httpClient.post<Item>(this.path, {...item});
   }
 
+  createItems(items: Item[]): Observable<Item[]> {
+    // return from(items).pipe(
+    //   concatMap(item => this.httpClient.post<Item>(this.path, {...item}))
+    // );
+    return forkJoin(items.map((item) => this.httpClient.post<Item>(this.path, {...item})));
+  }
+
   getItems() {
     return this.httpClient.get<Item[]>(this.path);
   }
@@ -37,5 +43,13 @@ export class ItemService {
 
   updateBulk(items: Update<Item>[]) {
     return forkJoin(items.map((item) => this.update(item)));
+  }
+
+  prepareItems(items: Partial<Item>[], listId: string): Item[] {
+    return items.map((item) => ({
+      stroke: false,
+      ...item,
+      listId
+    } as Item));
   }
 }

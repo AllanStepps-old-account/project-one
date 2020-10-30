@@ -14,6 +14,9 @@ export class ItemCreateComponent implements OnInit {
   @Input()
   listId: List['id'];
 
+  @Input()
+  list?;
+
   itemForm = this.formBuilder.group({
     action: '',
   });
@@ -25,8 +28,15 @@ export class ItemCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    const item = this.itemForm.value, listId = this.listId;
-    this.store.dispatch(new ItemCreateRequestAction({item, listId}));
+    const item = this.itemForm.value;
+
+    if (this.listId) {
+      const listId = this.listId;
+      this.store.dispatch(new ItemCreateRequestAction({item, listId}));
+    } else {
+      this.list.items = [item, ...this.list.items];
+    }
+
     this.itemForm.reset();
   }
 

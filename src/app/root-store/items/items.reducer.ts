@@ -22,6 +22,14 @@ export function itemsReducer(state = initialState, action: Actions): State {
         error: action.payload.error
       };
     case ActionTypes.ITEM_CREATE_SUCCESS:
+      if (action.payload.items) {
+        return featureAdapter.addMany(action.payload.items, {
+          ...state,
+          isLoading: false,
+          error: null
+        });
+      }
+
       return featureAdapter.addOne(action.payload.item, {
         ...state,
         isLoading: false,

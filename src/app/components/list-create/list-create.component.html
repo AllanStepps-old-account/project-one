@@ -12,16 +12,14 @@
       <a mat-button color="accent" [routerLink]="['../list/create']">ADVANCED CREATION</a>
     </ng-container>
 
-
-    <app-list-display></app-list-display>
-
-
     <ng-container *ngIf="mode === creationMode.COMPLETE">
+
+      <app-list-display [list]="creationList"></app-list-display>
+
       <button mat-raised-button type="submit" [disabled]="!listForm.valid || (isLoading$ | async)" color="primary">
         CREATE LIST AND ITEMS
       </button>
     </ng-container>
-
 
   </form>
 </div>

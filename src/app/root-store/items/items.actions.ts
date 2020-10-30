@@ -44,7 +44,7 @@ export class ItemCreateRequestAction implements Action {
 export class ItemCreateSuccessAction implements Action {
   readonly type = ActionTypes.ITEM_CREATE_SUCCESS;
 
-  constructor(public payload: { item: Item }) {
+  constructor(public payload: { item?: Item, items?: Item[] }) {
   }
 }
 
