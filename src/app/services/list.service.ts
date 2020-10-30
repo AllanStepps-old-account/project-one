@@ -2,10 +2,13 @@ import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {List} from '../models/list.model';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {selectUserId} from '../root-store/login/login.selector';
-import {switchMap, take} from 'rxjs/operators';
+import {map, switchMap, take, tap} from 'rxjs/operators';
+import {Update} from '@ngrx/entity';
+import {Item} from '../models/item.model';
+import {User} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +29,20 @@ export class ListService {
 
   getLists(): Observable<List[]> {
     return this.httpClient.get<List[]>(this.path);
+  }
+
+  update(list: Update<List>): Observable<List> {
+    const {id, changes} = list;
+    return this.httpClient.patch<List>(this.path + '/' + id, {...changes});
+  }
+
+  checkName(value: string, id: string) {
+    if (!value) {
+      return of(false);
+    }
+
+    return this.httpClient.get(environment.apiUrl + '/lists?name=' + value).pipe(
+      map((array: List[]) => !!array.length && (array[0].id !== id))
+    );
   }
 }

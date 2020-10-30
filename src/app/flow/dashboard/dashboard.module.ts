@@ -13,7 +13,6 @@ import {CommonModule} from '@angular/common';
 import {ListBreadcrumbModule} from '../../components/list-breadcrumb/list-breadcrumb.module';
 import {ListCreateComponent} from '../../components/list-create/list-create.component';
 
-
 export const routes: Routes = [
   {
     path: '', component: DashboardComponent, children: [

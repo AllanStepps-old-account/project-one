@@ -1,6 +1,7 @@
 import {Action} from '@ngrx/store';
 import {List} from '../../models/list.model';
 import {Item} from '../../models/item.model';
+import {Update} from '@ngrx/entity';
 
 export enum ActionTypes {
   LIST_LOAD_REQUEST = '[List] Load Request',
@@ -57,6 +58,9 @@ export class ListCreateFailureAction implements Action {
 
 export class ListUpdateRequestAction implements Action {
   readonly type = ActionTypes.LIST_UPDATE_REQUEST;
+
+  constructor(public payload: { list: Update<List> }) {
+  }
 }
 
 export class ListUpdateSuccessAction implements Action {

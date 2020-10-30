@@ -1,1 +1,8 @@
+.editable {
+  cursor: url("~src/assets/double_tap-32.png") 16 10, auto;
+}
 
+.no-border ::ng-deep .mat-form-field-infix {
+  border-top: 0;
+  padding-top: 0;
+}

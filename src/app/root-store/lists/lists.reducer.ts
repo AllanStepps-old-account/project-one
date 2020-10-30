@@ -22,8 +22,14 @@ export function listsReducer(state = initialState, action: Actions): State {
         error: action.payload.error
       };
     case ActionTypes.LIST_CREATE_SUCCESS:
-    case ActionTypes.LIST_UPDATE_SUCCESS:
       return featureAdapter.addOne(action.payload.list, {
+        ...state,
+        isLoading: false,
+        error: null
+      });
+
+    case ActionTypes.LIST_UPDATE_SUCCESS:
+      return featureAdapter.upsertOne(action.payload.list, {
         ...state,
         isLoading: false,
         error: null

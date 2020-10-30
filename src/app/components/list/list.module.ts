@@ -13,6 +13,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FlexModule} from '@angular/flex-layout';
 import {MatListModule} from '@angular/material/list';
 import {ItemModule} from '../item/item.module';
+import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -21,22 +22,25 @@ import {ItemModule} from '../item/item.module';
   exports: [
     ListComponent,
   ],
-    imports: [
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatCheckboxModule,
-        ReactiveFormsModule,
-        CommonModule,
-        ItemCreateModule,
-        FormsModule,
-        FlexModule,
-        MatListModule,
-        ItemModule,
-    ],
+  imports: [
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    CommonModule,
+    ItemCreateModule,
+    FormsModule,
+    FlexModule,
+    MatListModule,
+    ItemModule,
+  ],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+  ]
 })
 export class ListModule {
 }

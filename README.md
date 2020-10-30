@@ -19,3 +19,9 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## Async Validators (List Name)
+
+Double-click on a list name to change its name. \
+The name will be verified against other list names owned by the same user.
+
+![](gif/async-validator-list.gif)

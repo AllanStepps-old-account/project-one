@@ -10,9 +10,14 @@
   ],
   "lists": [
     {
-      "name": "Project One",
+      "name": "Project Two",
       "userId": 1,
       "id": 1
+    },
+    {
+      "name": "Project One",
+      "userId": 1,
+      "id": 2
     }
   ],
   "items": [

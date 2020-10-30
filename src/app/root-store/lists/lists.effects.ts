@@ -12,7 +12,7 @@ import {
   ListCreateSuccessAction,
   ListLoadFailureAction,
   ListLoadRequestAction,
-  ListLoadSuccessAction
+  ListLoadSuccessAction, ListUpdateFailureAction, ListUpdateRequestAction, ListUpdateSuccessAction
 } from './lists.actions';
 import {ItemService} from '../../services/item.service';
 import {Item} from '../../models/item.model';
@@ -31,6 +31,17 @@ export default class ListsEffects {
       catchError((error) => of(new ListCreateFailureAction({error}))),
     ))
   );
+
+  @Effect()
+  listUpdateEffect$: Observable<Action> = this.actions$.pipe(
+    ofType<ListUpdateRequestAction>(ActionTypes.LIST_UPDATE_REQUEST),
+    map((action) => action.payload),
+    mergeMap(({list}) => this.listService.update(list).pipe(
+      map((list: List) => new ListUpdateSuccessAction({list})),
+      catchError((error) => of(new ListUpdateFailureAction({error}))),
+    ))
+  );
+
 
   @Effect()
   listCreateSuccessEffect$: Observable<Action> = this.actions$.pipe(
