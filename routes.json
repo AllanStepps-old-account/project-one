@@ -2,5 +2,5 @@
   "/api*": "$1",
   "/users*": "/600/users$1",
   "/lists*": "/664/lists$1",
-  "/checkEmail/*": "/users?email=$1&limit=1"
+  "/checkEmail/*": "/444/users?email=$1&_start=0&_end=0"
 }

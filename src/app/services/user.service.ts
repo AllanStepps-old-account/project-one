@@ -92,12 +92,18 @@ export class UserService {
     return throwError('Please login.');
   }
 
-  checkEmailExists(value: string): Observable<boolean> {
-    if (!value) {
+  /**
+   * That's a quick fix to not display the User we trying to check the existing email with.
+   * json-server will not return any body to the response, and we can use x-total-count from
+   * pagination feature.
+   * @param email
+   */
+  checkEmailExists(email: string): Observable<boolean> {
+    if (!email) {
       return of(false);
     }
-    return this.httpClient.get(environment.apiUrl + '/checkEmail/' + value).pipe(
-      map((array: User[]) => !!array.length)
+    return this.httpClient.get(environment.apiUrl + '/checkEmail/' + email, {observe: 'response'}).pipe(
+      map(({headers}) => headers.get('x-total-count') === '1')
     );
   }
 
