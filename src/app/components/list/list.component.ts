@@ -1,26 +1,22 @@
-import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {selectSelectedList} from '../../root-store/lists/lists.selector';
 import {selectSelectedItems} from '../../root-store/items/items.selector';
 import {Item} from '../../models/item.model';
 import {Observable} from 'rxjs';
 import {List} from '../../models/list.model';
-import {ItemUpdateRequestAction} from '../../root-store/items/items.actions';
 import {CreationList} from '../../models/creation-list.model';
-import {filter, take, withLatestFrom} from 'rxjs/operators';
-import {MatInput} from '@angular/material/input';
 import {ListUpdateRequestAction} from '../../root-store/lists/lists.actions';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {ListService} from '../../services/list.service';
 import {ListAsyncValidator} from './list.async-validator';
-import {SignUpAsyncValidator} from '../sign-up/sign-up.async-validator';
 
 @Component({
   selector: 'app-list-display',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
 
   @Input() list: CreationList;
 
@@ -36,20 +32,6 @@ export class ListComponent implements OnInit {
   editMode = false;
 
   constructor(private store: Store, private listService: ListService, private formBuilder: FormBuilder) {
-  }
-
-  ngOnInit(): void {
-  }
-
-  toggleItemDone(item: Item) {
-    this.store.dispatch(new ItemUpdateRequestAction({
-      item: {
-        id: item.id,
-        changes: {
-          done: !item.done
-        }
-      }
-    }));
   }
 
   /**

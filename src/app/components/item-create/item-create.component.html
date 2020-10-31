@@ -1,6 +1,6 @@
-<form [formGroup]="itemForm" (ngSubmit)="onSubmit()" >
+<form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
   <mat-form-field fxFlexFill>
-    <input matInput placeholder="Nouvel item..." formControlName="action" autocomplete="off"/>
-    <mat-hint>Ajouter un nouvel élément et appuyez sur la touche Entrée</mat-hint>
+    <input matInput placeholder="New item..." formControlName="action" autocomplete="off" (blur)="clearValidators()"/>
+    <mat-hint>Type an item to add, then press Enter</mat-hint>
   </mat-form-field>
 </form>

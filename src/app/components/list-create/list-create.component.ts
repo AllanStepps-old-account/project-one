@@ -70,4 +70,10 @@ export class ListCreateComponent implements OnInit {
   goToAdvancedMode() {
     return this.router.navigate(['../list/create'], {queryParams: this.listForm.value});
   }
+
+  resetValidatorsIfEmpty() {
+    if (this.listForm.value.name === '' && this.mode === CreationMode.FAST) {
+      this.listForm.reset();
+    }
+  }
 }

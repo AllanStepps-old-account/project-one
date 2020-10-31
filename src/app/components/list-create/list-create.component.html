@@ -1,9 +1,9 @@
 <form [formGroup]="listForm" (ngSubmit)="onSubmit()" [class.mat-display-1]="mode === creationMode.COMPLETE" fxFlexFill>
   <mat-form-field [formGroup]="listForm" fxFlexFill>
-    <input matInput placeholder="Name of the list" formControlName="name" autocomplete="off" #name>
-    <mat-error *ngIf="listForm.get('name').hasError('required')">Un nom est requis...</mat-error>
-    <mat-error *ngIf="listForm.get('name').hasError('listExists')">Ce nom existe déjà, appuyez sur Échap pour
-      annuler ou saississez un nom différent...
+    <input matInput placeholder="Name of the list" formControlName="name" autocomplete="off"
+           (blur)="resetValidatorsIfEmpty()" #name>
+    <mat-error *ngIf="listForm.get('name').hasError('required')">A name is mandatory</mat-error>
+    <mat-error *ngIf="listForm.get('name').hasError('listExists')">This name already exists, please change it or press Escape to cancel
     </mat-error>
   </mat-form-field>
 

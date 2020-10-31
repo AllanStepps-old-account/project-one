@@ -8,15 +8,12 @@ import {Store} from '@ngrx/store';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent {
 
   @Input()
   item: Item;
 
   constructor(private store: Store) { }
-
-  ngOnInit(): void {
-  }
 
   toggleItemDone(item: Item) {
     this.store.dispatch(new ItemUpdateRequestAction({
