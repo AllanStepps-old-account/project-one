@@ -6,10 +6,20 @@
                           *ngIf="(isLoading$ | async) === true"></mat-progress-spinner>
   </mat-list-item>
   <mat-divider></mat-divider>
-  <ng-container *ngFor="let list of (lists$ | async)">
-    <mat-list-item>
-      <app-list-overview [list]="list" [nbItems]="(selectAllItemsCountsByList$ | async)[list.id]"></app-list-overview>
-    </mat-list-item>
-    <mat-divider></mat-divider>
+  <ng-container *ngIf="(lists$ | async) as lists">
+    <ng-container *ngIf="lists.length; else noListsTemplate">
+      <ng-container *ngFor="let list of (lists$ | async)">
+        <mat-list-item>
+          <app-list-overview [list]="list"
+                             [nbItems]="(selectAllItemsCountsByList$ | async)[list.id]"></app-list-overview>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </ng-container>
+    <ng-template #noListsTemplate>
+      <mat-list-item>
+        No list to display yet, feel free to create one :) !
+      </mat-list-item>
+    </ng-template>
   </ng-container>
 </mat-list>

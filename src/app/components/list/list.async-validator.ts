@@ -5,6 +5,11 @@ import {Observable} from 'rxjs';
 
 export class ListAsyncValidator {
 
+  /**
+   * this async validator is bind to the form itself, so it will update
+   * the validity of the name form control
+   * @param listService
+   */
   public static checkName(listService: ListService): AsyncValidatorFn {
     return (group: FormGroup): Observable<null> => {
       const {name, id} = group.value;

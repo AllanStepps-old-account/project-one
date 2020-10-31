@@ -13,7 +13,7 @@ export class SpyHelper {
       }
 
       for (let key of Object.getOwnPropertyNames(proto)) {
-        const descriptor = Object.getOwnPropertyDescriptor(proto, key)!;
+        const descriptor = Object.getOwnPropertyDescriptor(proto, key);
 
         if (typeof descriptor.value === 'function' && key !== 'constructor') {
           target[key] = jasmine.createSpy(key);

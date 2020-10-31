@@ -6,7 +6,9 @@ import {ItemService} from '../../services/item.service';
 import {Item} from '../../models/item.model';
 import {ItemLoadFailureAction, ItemLoadRequestAction, ItemLoadSuccessAction} from './items.actions';
 import {cold, hot} from 'jasmine-marbles';
-import {HttpClientModule} from '@angular/common/http';
+import {ItemsModule} from './items.module';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 
 describe('ItemsEffect', () => {
   let actions: Observable<any>;
@@ -15,11 +17,13 @@ describe('ItemsEffect', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot([]),
+        ItemsModule
+      ],
       providers: [
-        ItemsEffects,
         provideMockActions(() => actions),
-        ItemService,
       ],
     });
 
@@ -45,11 +49,11 @@ describe('ItemsEffect', () => {
     const error = new Error('some random error because of the network') as any;
     const outcome = new ItemLoadFailureAction({error});
 
-    actions = hot('-a', { a: action });
+    actions = hot('-a', {a: action});
     const response = cold('-#|', {}, error);
     spyOn(itemService, 'getItems').and.returnValue(response);
 
-    const expected = cold('--b', { b: outcome });
+    const expected = cold('--b', {b: outcome});
     expect(effects.itemLoadEffect$).toBeObservable(expected);
   });
 });

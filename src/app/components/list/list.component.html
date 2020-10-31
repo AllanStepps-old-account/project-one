@@ -8,11 +8,12 @@
       <mat-form-field [formGroup]="listFormGroup" class="no-border" fxFill>
         <input matInput formControlName="name" (keydown.enter)="updateListName()" (keydown.escape)="leaveEditMode()"
                autocomplete="off"
-               (blur)="leaveEditMode()">
-        <mat-hint>Tapez le nom de la liste, puis appuyez sur la touche Entrée</mat-hint>
-        <mat-error *ngIf="listFormGroup.get('name').hasError('required')">Un nom est requis...</mat-error>
-        <mat-error *ngIf="listFormGroup.get('name').hasError('listExists')">Ce nom existe déjà, appuyez sur Échap pour
-          annuler ou saississez un nom différent...
+               formControlName="name"
+               matInput>
+        <mat-hint>Type the name of your list, then press Enter</mat-hint>
+        <mat-error *ngIf="listFormGroup.get('name').hasError('required')">A name is mandatory</mat-error>
+        <mat-error *ngIf="listFormGroup.get('name').hasError('listExists')">
+          This name already exists, please change it or press Escape to cancel
         </mat-error>
       </mat-form-field>
     </ng-template>

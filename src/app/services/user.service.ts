@@ -20,14 +20,14 @@ export class UserService {
   }
 
   getAccessToken(): string {
-    return localStorage.getItem(this.ACCESS_TOKEN_KEY);
+    return sessionStorage.getItem(this.ACCESS_TOKEN_KEY);
   }
 
   setAccessToken(accessToken: string) {
     if (accessToken == null) {
-      localStorage.removeItem(this.ACCESS_TOKEN_KEY);
+      sessionStorage.removeItem(this.ACCESS_TOKEN_KEY);
     } else {
-      localStorage.setItem(this.ACCESS_TOKEN_KEY, accessToken);
+      sessionStorage.setItem(this.ACCESS_TOKEN_KEY, accessToken);
     }
   }
 

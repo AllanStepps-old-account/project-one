@@ -1,19 +1,19 @@
 <mat-toolbar>
   <span>Registration</span>
 </mat-toolbar>
-<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
   <mat-card-content>
     <mat-form-field fxFlexFill>
       <mat-label>First Name</mat-label>
-      <input matInput placeholder="First name" formControlName="firstName" required>
+      <input formControlName="firstName" matInput placeholder="First name" required>
     </mat-form-field>
     <mat-form-field fxFlexFill>
       <mat-label>Last Name</mat-label>
-      <input matInput placeholder="Last Name" formControlName="lastName" required>
+      <input formControlName="lastName" matInput placeholder="Last Name" required>
     </mat-form-field>
     <mat-form-field fxFlexFill>
       <mat-label>Email</mat-label>
-      <input matInput placeholder="Email" formControlName="email">
+      <input formControlName="email" matInput placeholder="Email">
       <mat-error *ngIf="signUpForm.get('email').hasError('emailExists')">
         <strong>Email already exists...</strong>
       </mat-error>
@@ -26,7 +26,7 @@
     </mat-form-field>
     <mat-form-field fxFlexFill>
       <mat-label>Password</mat-label>
-      <input matInput type="password" placeholder="Password" minlength="4" formControlName="password">
+      <input formControlName="password" matInput minlength="4" placeholder="Password" type="password">
       <mat-error *ngIf="signUpForm.get('password').hasError('minlength')">
         Password is too short
       </mat-error>
@@ -38,8 +38,11 @@
 
   </mat-card-content>
   <mat-card-actions>
-    <a mat-button (click)="prefill()" color="accent">PRE-FILL</a>
-    <button mat-raised-button type="submit" [disabled]="!signUpForm.valid || (selectSignUpIsLoading$ | async)" color="primary">REGISTER</button>
+    <a (click)="prefill()" color="accent" mat-button>PRE-FILL</a>
+    <button [disabled]="!signUpForm.valid || (selectSignUpIsLoading$ | async)" color="primary"
+            mat-raised-button
+            type="submit">REGISTER
+    </button>
     <mat-error *ngIf="signUpError$ | async as error">{{error}}</mat-error>
   </mat-card-actions>
 </form>
