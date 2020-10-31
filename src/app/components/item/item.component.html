@@ -1,5 +1,10 @@
-<ng-container *ngIf="item">
+<div class="item" *ngIf="item">
   <mat-checkbox [checked]="item.done" (change)="toggleItemDone(item)">
     <span [class.done]="item.done">{{item.action}}</span>
   </mat-checkbox>
-</ng-container>
+
+  <button mat-button class="delete-action">
+    <mat-icon *ngIf="item.done" (click)="delete(item)">delete</mat-icon>
+  </button>
+
+</div>

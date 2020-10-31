@@ -58,8 +58,9 @@ export class ListCreateComponent implements OnInit {
   onSubmit() {
     const list = this.listForm.value;
     const items = this.creationList.items;
+    const redirect = this.mode === CreationMode.COMPLETE;
 
-    this.store.dispatch(new ListCreateRequestAction({list, items}));
+    this.store.dispatch(new ListCreateRequestAction({list, items, redirect}));
 
     if (this.mode === CreationMode.FAST) {
       setTimeout(() => this.formGroupDirective.resetForm(), 200); // give some style to the clear

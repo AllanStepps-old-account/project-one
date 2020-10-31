@@ -38,14 +38,14 @@ export class ListLoadFailureAction implements Action {
 export class ListCreateRequestAction implements Action {
   readonly type = ActionTypes.LIST_CREATE_REQUEST;
 
-  constructor(public payload: { list: List, items?: Item[] }) {
+  constructor(public payload: { list: List, items?: Item[], redirect?: boolean }) {
   }
 }
 
 export class ListCreateSuccessAction implements Action {
   readonly type = ActionTypes.LIST_CREATE_SUCCESS;
 
-  constructor(public payload: { list: List, items?: Item[] }) {
+  constructor(public payload: { list: List, items?: Item[], redirect?: boolean }) {
   }
 }
 

@@ -19,7 +19,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
   ],
   imports: [
     MatCheckboxModule,
-    CommonModule
+    CommonModule,
+    MatIconModule,
+    MatButtonModule
   ],
 })
 export class ItemModule {

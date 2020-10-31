@@ -2,7 +2,7 @@ import {Item} from '../../models/item.model';
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 
 export const featureAdapter: EntityAdapter<Item> = createEntityAdapter<Item>({
-  selectId: model => model.id,
+  selectId: item => item.id,
   sortComparer: (a: Item, b: Item): number =>
     parseInt(b.id) - parseInt(a.id)
 });

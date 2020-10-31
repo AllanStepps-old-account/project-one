@@ -12,7 +12,10 @@ import {
   ListCreateSuccessAction,
   ListLoadFailureAction,
   ListLoadRequestAction,
-  ListLoadSuccessAction, ListUpdateFailureAction, ListUpdateRequestAction, ListUpdateSuccessAction
+  ListLoadSuccessAction,
+  ListUpdateFailureAction,
+  ListUpdateRequestAction,
+  ListUpdateSuccessAction
 } from './lists.actions';
 import {ItemService} from '../../services/item.service';
 import {Item} from '../../models/item.model';
@@ -26,8 +29,8 @@ export default class ListsEffects {
   listCreateEffect$: Observable<Action> = this.actions$.pipe(
     ofType<ListCreateRequestAction>(ActionTypes.LIST_CREATE_REQUEST),
     map((action) => action.payload),
-    mergeMap(({list, items}) => this.listService.createList(list).pipe(
-      map((list: List) => new ListCreateSuccessAction({list, items})),
+    mergeMap(({list, items, redirect}) => this.listService.createList(list).pipe(
+      map((list: List) => new ListCreateSuccessAction({list, items, redirect})),
       catchError((error) => of(new ListCreateFailureAction({error}))),
     ))
   );
@@ -47,12 +50,16 @@ export default class ListsEffects {
   listCreateSuccessEffect$: Observable<Action> = this.actions$.pipe(
     ofType<ListCreateSuccessAction>(ActionTypes.LIST_CREATE_SUCCESS),
     map((action) => action.payload),
-    mergeMap(({items, list}) => {
+    tap(({list, redirect}) => {
+      if (redirect) {
+        this.router.navigate(['list', list.id]);
+      }
+    }),
+    mergeMap(({items, list, redirect}) => {
       if (items) {
         items = this.itemService.prepareItems(items, list.id);
         return this.itemService.createItems(items).pipe(
           map((items: Item[]) => new ItemCreateSuccessAction({items})),
-          tap(() => this.router.navigate(['list', list.id])),
           catchError((error) => of(new ItemCreateFailureAction({error}))),
         );
       }

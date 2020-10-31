@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Item} from '../../models/item.model';
-import {ItemUpdateRequestAction} from '../../root-store/items/items.actions';
+import {ItemDeleteRequestAction, ItemUpdateRequestAction} from '../../root-store/items/items.actions';
 import {Store} from '@ngrx/store';
 
 @Component({
@@ -29,4 +29,7 @@ export class ItemComponent implements OnInit {
     }));
   }
 
+  delete(item: Item) {
+    this.store.dispatch(new ItemDeleteRequestAction({item}));
+  }
 }

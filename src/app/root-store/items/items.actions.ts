@@ -14,6 +14,10 @@ export enum ActionTypes {
   ITEM_UPDATE_REQUEST = '[Item] Update Request',
   ITEM_UPDATE_SUCCESS = '[Item] Update Success',
   ITEM_UPDATE_FAILURE = '[Item] Update Failure',
+
+  ITEM_DELETE_REQUEST = '[Item] Delete Request',
+  ITEM_DELETE_SUCCESS = '[Item] Delete Success',
+  ITEM_DELETE_FAILURE = '[Item] Delete Failure',
 }
 
 export class ItemLoadRequestAction implements Action {
@@ -76,6 +80,27 @@ export class ItemUpdateFailureAction implements Action {
   }
 }
 
+export class ItemDeleteRequestAction implements Action {
+  readonly type = ActionTypes.ITEM_DELETE_REQUEST;
+
+  constructor(public payload: { item: Item }) {
+  }
+}
+
+export class ItemDeleteSuccessAction implements Action {
+  readonly type = ActionTypes.ITEM_DELETE_SUCCESS;
+
+  constructor(public payload: { item: Item }) {
+  }
+}
+
+export class ItemDeleteFailureAction implements Action {
+  readonly type = ActionTypes.ITEM_DELETE_FAILURE;
+
+  constructor(public payload: { error: string }) {
+  }
+}
+
 export type Actions =
   | ItemLoadRequestAction
   | ItemLoadSuccessAction
@@ -86,4 +111,7 @@ export type Actions =
   | ItemUpdateRequestAction
   | ItemUpdateSuccessAction
   | ItemUpdateFailureAction
+  | ItemDeleteRequestAction
+  | ItemDeleteSuccessAction
+  | ItemDeleteFailureAction
   ;

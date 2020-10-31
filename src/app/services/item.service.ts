@@ -52,4 +52,8 @@ export class ItemService {
       listId
     } as Item));
   }
+
+  removeItem(id: string) {
+    return this.httpClient.delete<Item>(this.path + '/' + id);
+  }
 }

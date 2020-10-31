@@ -18,7 +18,7 @@ export class SnackBarService {
   }
 
   display(message: string, action?: string, config: MatSnackBarConfig = {}) {
-    this.snackBar.open(message, action, {
+    return this.snackBar.open(message, action, {
       duration: 3000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
@@ -35,5 +35,12 @@ export class SnackBarService {
         duration: 5000
       })
     );
+  }
+
+  pleaseRefresh() {
+    this.display('There was a network issue, reloading...');
+    setTimeout(() => {
+      location.reload();
+    }, 1000);
   }
 }
