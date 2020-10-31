@@ -25,7 +25,7 @@ export default class RootEffects {
       .loginFromStorage()
       .pipe(
         map((user: User) => new LoginSuccessAction({user})),
-        // catchError((error) => observableOf(new LoginFailureAction({error}))),
+        catchError((error) => observableOf(new LoginFailureAction({error}))),
       )),
   );
 

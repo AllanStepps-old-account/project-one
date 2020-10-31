@@ -17,11 +17,11 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-[comment]: <> (## Running end-to-end tests)
+## Running end-to-end tests
 
-[comment]: <> (Run `ng e2e` to execute the end-to-end tests via [Protractor]&#40;http://www.protractortest.org/&#41;.)
+Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). The `json-server` will be launched automatically and will target `e2e-db.json`
 
 ## Async Validators (List Name)
 
