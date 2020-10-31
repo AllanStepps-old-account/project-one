@@ -1,27 +1,31 @@
-<div fxLayoutAlign="none stretch">
-  <form [formGroup]="listForm" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <mat-label>Name of the list</mat-label>
-      <input matInput placeholder="Name of the list" formControlName="name" required #name>
-    </mat-form-field>
+<form [formGroup]="listForm" (ngSubmit)="onSubmit()" [class.mat-display-1]="mode === creationMode.COMPLETE" fxFlexFill>
+  <mat-form-field [formGroup]="listForm" fxFlexFill>
+    <input matInput placeholder="Name of the list" formControlName="name" autocomplete="off" #name>
+    <mat-error *ngIf="listForm.get('name').hasError('required')">Un nom est requis...</mat-error>
+    <mat-error *ngIf="listForm.get('name').hasError('listExists')">Ce nom existe déjà, appuyez sur Échap pour
+      annuler ou saississez un nom différent...
+    </mat-error>
+  </mat-form-field>
 
-    <ng-container *ngIf="mode === creationMode.FAST">
-      <button mat-raised-button type="submit" [disabled]="!listForm.valid || (isLoading$ | async)" color="primary">
-        CREATE
-      </button>
-      <a mat-button color="accent" (click)="goToAdvancedMode()">ADVANCED
-        CREATION</a>
-    </ng-container>
+  <ng-container *ngIf="mode === creationMode.FAST">
+    <button mat-raised-button type="submit" [disabled]="!listForm.valid || (isLoading$ | async)" color="primary">
+      CREATE
+    </button>
+    <a mat-button color="accent" (click)="goToAdvancedMode()">ADVANCED
+      CREATION</a>
+  </ng-container>
 
-    <ng-container *ngIf="mode === creationMode.COMPLETE">
+  <div *ngIf="mode === creationMode.COMPLETE" fxLayout="column" fxFlexFill>
 
-      <app-list-display [list]="creationList"></app-list-display>
+    <div fxLayout="row" fxFlexFill>
 
-      <button mat-raised-button type="submit" [disabled]="!listForm.valid || (isLoading$ | async)" color="primary">
-        CREATE LIST AND ITEMS
-      </button>
-    </ng-container>
+      <app-list-display [list]="creationList" fxFlexFill></app-list-display>
+    </div>
 
-  </form>
-</div>
+    <button class="mt-4" mat-raised-button type="submit" [disabled]="!listForm.valid || (isLoading$ | async)"
+            color="primary">
+      CREATE LIST AND ITEMS
+    </button>
+  </div>
+</form>
 

@@ -36,7 +36,7 @@ export class ListService {
     return this.httpClient.patch<List>(this.path + '/' + id, {...changes});
   }
 
-  checkName(value: string, id: string) {
+  checkName(value: string, id: string = null) {
     if (!value) {
       return of(false);
     }

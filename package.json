@@ -13,7 +13,7 @@
     "e2e": "run-p json-server-e2e protractor",
     "protractor": "ng e2e",
     "poste2e": "ECHO YOU MUST CLEAN THE DB.",
-    "json-server": "json-server-auth --watch db/db.json -r routes.json",
+    "json-server": "json-server-auth --watch db/db.json -r routes.json --delay 100",
     "json-server-e2e": "json-server-auth --watch  db/e2e-db.json -r routes.json"
   },
   "private": true,

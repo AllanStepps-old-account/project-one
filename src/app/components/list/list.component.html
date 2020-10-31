@@ -18,8 +18,8 @@
     </ng-template>
   </h1>
   <mat-list>
-    <mat-list-item fxLayout="row" fxFlexFill>
-      <app-item-create [list]="list" [listId]="asyncList.id"></app-item-create>
+    <mat-list-item fxLayout="column" fxFlexFill>
+      <app-item-create [list]="list" [listId]="asyncList.id" fxFlexFill></app-item-create>
     </mat-list-item>
     <mat-divider></mat-divider>
     <ng-container *ngFor="let item of items$ | async">

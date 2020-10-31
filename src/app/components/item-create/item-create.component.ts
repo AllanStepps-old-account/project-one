@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {List} from '../../models/list.model';
 import {ItemCreateRequestAction} from '../../root-store/items/items.actions';
@@ -18,7 +18,7 @@ export class ItemCreateComponent implements OnInit {
   list?;
 
   itemForm = this.formBuilder.group({
-    action: '',
+    action: ['', Validators.required],
   });
 
 
@@ -29,16 +29,18 @@ export class ItemCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    const item = this.itemForm.value;
+    if (this.itemForm.valid) {
+      const item = this.itemForm.value;
 
-    if (this.listId) {
-      const listId = this.listId;
-      this.store.dispatch(new ItemCreateRequestAction({item, listId}));
-    } else {
-      this.list.items = [item, ...this.list.items];
+      if (this.listId) {
+        const listId = this.listId;
+        this.store.dispatch(new ItemCreateRequestAction({item, listId}));
+      } else {
+        this.list.items = [item, ...this.list.items];
+      }
+
+      this.itemForm.reset();
     }
-
-    this.itemForm.reset();
   }
 
 }
