@@ -29,7 +29,7 @@ export default class ItemsEffects {
     ofType<ItemCreateRequestAction>(ActionTypes.ITEM_CREATE_REQUEST),
     map((action) => action.payload),
     mergeMap(({item, listId}) => this.itemService.createItem(item, listId).pipe(
-      map((item: Item) => new ItemCreateSuccessAction({item})),
+      map((item: Item) => new ItemCreateSuccessAction({items: [item]})),
       catchError((error) => of(new ItemCreateFailureAction({error}))),
     ))
   );
