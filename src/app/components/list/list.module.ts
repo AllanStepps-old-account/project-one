@@ -9,6 +9,7 @@ import {ItemCreateModule} from '../item-create/item-create.module';
 import {ItemModule} from '../item/item.module';
 import {FlexModule} from '@angular/flex-layout';
 import {MatInputModule} from '@angular/material/input';
+import {ListNameModule} from '../list-name/list-name.module';
 
 @NgModule({
   declarations: [
@@ -17,16 +18,17 @@ import {MatInputModule} from '@angular/material/input';
   exports: [
     ListComponent,
   ],
-  imports: [
-    CommonModule,
-    FlexModule,
-    ItemCreateModule,
-    ItemModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatListModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        CommonModule,
+        FlexModule,
+        ItemCreateModule,
+        ItemModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatListModule,
+        ReactiveFormsModule,
+        ListNameModule
+    ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ]

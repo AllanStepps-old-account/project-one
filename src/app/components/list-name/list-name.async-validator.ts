@@ -3,7 +3,7 @@ import {mapTo, tap} from 'rxjs/operators';
 import {ListService} from '../../services/list.service';
 import {Observable} from 'rxjs';
 
-export class ListAsyncValidator {
+export class ListNameAsyncValidator {
 
   /**
    * this async validator is bind to the form itself, so it will update

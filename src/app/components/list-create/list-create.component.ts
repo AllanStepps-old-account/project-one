@@ -8,8 +8,8 @@ import {CreationList} from '../../models/creation-list.model';
 import {selectRouteQueryParams} from '../../root-store/router/router.selector';
 import {take} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {ListAsyncValidator} from '../list/list.async-validator';
 import {ListService} from '../../services/list.service';
+import {ListNameAsyncValidator} from '../list-name/list-name.async-validator';
 
 export enum CreationMode {
   FAST = 'fast',
@@ -36,7 +36,7 @@ export class ListCreateComponent implements OnInit {
 
   listForm = this.formBuilder.group({
     name: ['', Validators.required],
-  }, {asyncValidators: ListAsyncValidator.checkName(this.listService)});
+  }, {asyncValidators: ListNameAsyncValidator.checkName(this.listService)});
 
   creationList: CreationList = {name: '', items: []};
 

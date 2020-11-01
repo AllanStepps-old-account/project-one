@@ -1,23 +1,5 @@
 <ng-container *ngIf="((list$ | async) || list) as asyncList">
-  <h1 matTooltip="Double-click for edit">
-    <span class="editable" *ngIf="!editMode; else editModeTemplate"
-          (dblclick)="goEditMode(asyncList.name, asyncList.id)">
-      {{asyncList.name}}
-    </span>
-    <ng-template #editModeTemplate>
-      <mat-form-field [formGroup]="listFormGroup" class="no-border" fxFill>
-        <input matInput formControlName="name" (keydown.enter)="updateListName()" (keydown.escape)="leaveEditMode()"
-               autocomplete="off"
-               formControlName="name"
-               matInput>
-        <mat-hint>Type the name of your list, then press Enter</mat-hint>
-        <mat-error *ngIf="listFormGroup.get('name').hasError('required')">A name is mandatory</mat-error>
-        <mat-error *ngIf="listFormGroup.get('name').hasError('listExists')">
-          This name already exists, please change it or press Escape to cancel
-        </mat-error>
-      </mat-form-field>
-    </ng-template>
-  </h1>
+  <app-list-name [list]="list"></app-list-name>
   <mat-list>
     <mat-list-item fxLayout="column" fxFlexFill>
       <app-item-create [list]="list" [listId]="asyncList.id" fxFlexFill></app-item-create>
